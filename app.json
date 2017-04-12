@@ -1,0 +1,21 @@
+{
+  "name": "muse-cards-for-humanity",
+  "description": "Review apps for MUSE JS",
+  "scripts": {
+  },
+  "env": {
+    "DATABASE_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
