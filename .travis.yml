@@ -1,6 +1,7 @@
 language: node_js
+sudo: true
 node_js:
-  - "6"
+  - "6.9.x"
 before_script:
   - npm install -g grunt
   - sleep 15
