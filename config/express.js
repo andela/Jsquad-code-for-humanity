@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const flash = require('connect-flash');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
