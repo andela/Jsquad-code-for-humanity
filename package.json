@@ -13,7 +13,7 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "travis:test":"istanbul cover _mocha test/**/** -- -R spec",
+    "travis:test": "istanbul cover _mocha test/**/** -- -R spec",
     "start": "node node_modules/grunt-cli/bin/grunt",
     "test": "node node_modules/grunt-cli/bin/grunt test",
     "postinstall": "node node_modules/grunt-cli/bin/grunt install"
@@ -63,6 +63,7 @@
     "grunt-contrib-watch": "~1.0.0",
     "grunt-mocha-test": "~0.13.2",
     "grunt-nodemon": "~0.4.2",
+    "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "should": "~11.2.1",
     "supertest": "~3.0.0"
