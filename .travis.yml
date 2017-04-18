@@ -1,0 +1,16 @@
+language: node_js
+sudo: true
+node_js:
+  - "6"
+
+script: 
+  - npm run travis:test
+
+
+services:
+  - mongodb
+
+# Send coverage data to Coveralls
+after_script: 
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+
