@@ -4,3 +4,6 @@ public/lib
 .DS_store
 c4h_keys.txt
 .npm-upgrade.json
+.swp
+.vscode
+.idea
