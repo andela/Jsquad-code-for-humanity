@@ -9,23 +9,28 @@ const nodemon = require('gulp-nodemon');
 const bower = require('gulp-bower');
 const mocha = require('gulp-mocha');
 const istanbul = require('gulp-istanbul');
-// const browsersync = require('browser-sync);
+const browserSync = require('browser-sync');
+const dotenv = require('dotenv');
 
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  dotenv.config();
+}
+// Lint task
 gulp.task('lint', () => gulp.src(['public/js/**/*.js', 'test/**/*.js', 'app/**/*.js', '!node_modules/**'])
-    .pipe(eslint())
-	.pipe(eslint.format())
-	.pipe(eslint.failAfterError()));
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError()));
 
-
-/* gulp.task('default', ['lint']);*/
-
-gulp.task('sass', () => gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('.public/css')));
+// Sass task - convert scss to css
+gulp.task('sass', () => gulp.src('public/css/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(gulp.dest('public/css')));
 gulp.task('sass:watch', () => {
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('public/css/*.scss', ['sass']);
 });
 
+// Nodemon task
 gulp.task('startnodemon', () => {
   nodemon({
     script: 'server.js',
@@ -37,10 +42,34 @@ gulp.task('startnodemon', () => {
 // Run install command for bower; used a custom update command "update"
 gulp.task('dobower', () => bower({ cmd: 'update' }));
 
-gulp.task('test',['pre-test'], () => gulp.src(['./test/**/*.js'], {
-	read: false
-})
-.pipe(mocha({reporter: 'spec'})) 
-.pipe(istanbul.writeReports())
-    // Enforce a coverage of at least 90% 
-.pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }));
+// Mocha test task
+gulp.task('test', () => gulp.src(['./test/**/*.js'], { read: false })
+  .pipe(mocha({ reporter: 'spec' }))
+  .pipe(istanbul.writeReports())
+  .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
+);
+
+// Watch Task and reload browser
+gulp.task('watch', () => {
+  gulp.watch(['app/**/*.js', 'public/js/**/*.js'], ['lint'])
+    .on('change', browserSync.reload);
+  gulp.watch(['app/views/**/*.pug', 'public/css/*.css'])
+    .on('change', browserSync.reload);
+  gulp.watch('public/views/*.html')
+    .on('change', browserSync.reload);
+});
+
+// Server Task
+gulp.task('server', ['startnodemon'], () => {
+  browserSync.create({
+    server: 'server.js',
+    port: 3000,
+    reloadOnRestart: true
+  });
+});
+
+// Default task(s).
+gulp.task('default', ['server', 'watch', 'lint']);
+
+
+
