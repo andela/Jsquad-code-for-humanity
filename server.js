@@ -7,7 +7,7 @@ const io = require('socket.io');
 const app = express();
 
 /**
- * Main application entry file.
+ * Main application entry file.```
  * Please note that the order of loading is important.
  */
 
