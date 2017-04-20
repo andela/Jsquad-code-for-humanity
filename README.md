@@ -2,6 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/andela/muse-cards-for-humanity/badge.svg?branch=chore%2F143410119%2Fintergrate-coveralls-service)](https://coveralls.io/github/andela/muse-cards-for-humanity?branch=chore%2F143410119%2Fintergrate-coveralls-service)
 
 Cards for Humanity - [http://cfh.io](http://cfh.io)
+===========
 Cards for Humanity is a fast-paced online version of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
 
 Our Team
