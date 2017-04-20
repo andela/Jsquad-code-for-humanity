@@ -1,4 +1,7 @@
 var async = require('async');
+var express = require('express');
+var UserSchema  = require('../app/models/user');
+var jwt = require('jsonwebtoken');
 
 module.exports = function (app, passport, auth) {
     //User Routes
@@ -90,4 +93,35 @@ module.exports = function (app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
+    //API ROUTE
+    var apiRouter = express.Router();
+
+    //authentication
+    apiRouter.post('/authenticate', function(req, res) {
+
+        //check if email exists
+        email: req.body.email
+    }, function (err, email) {
+        if (err) throw err;
+        if (!email){
+            res.json({ success: false, message: 'Authentication failed. Email does not exist.' });
+        } else {
+            if (email.password != req.body.hashed_password) {
+                res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+            } else {
+                var token = jwt.sign(user, app.get('superSecret'), {
+
+                    // expires in 24 hours
+                    expiresIn: 1440
+
+                });
+      }
+    }
+  });
+
+
+
+
 };
+
+
