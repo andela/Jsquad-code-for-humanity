@@ -20,7 +20,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 gulp.task('lint', () => gulp.src(['public/js/**/*.js', 'test/**/*.js', 'app/**/*.js', '!node_modules/**'])
   .pipe(eslint())
   .pipe(eslint.format())
-  .pipe(eslint.failAfterError()));
+);
 
 // Sass task - convert scss to css
 gulp.task('sass', () => gulp.src('public/css/*.scss')
@@ -39,11 +39,19 @@ gulp.task('startnodemon', () => {
   });
 });
 
-// Run install command for bower; used a custom update command "update"
-gulp.task('dobower', () => bower({ cmd: 'update' }));
+// Run install command for bower
+gulp.task('bower', () => bower());
+
+gulp.task('pre-test', () => {
+  return gulp.src(['app/**/*.js'])
+    // Covering files
+    .pipe(istanbul())
+    // Force `require` to return covered files
+    .pipe(istanbul.hookRequire());
+});
 
 // Mocha test task
-gulp.task('test', () => gulp.src(['./test/**/*.js'], { read: false })
+gulp.task('test', ['pre-test'], () => gulp.src(['./test/**/*.js'], { read: false })
   .pipe(mocha({ reporter: 'spec' }))
   .pipe(istanbul.writeReports())
   .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
@@ -69,7 +77,7 @@ gulp.task('server', ['startnodemon'], () => {
 });
 
 // Default task(s).
-gulp.task('default', ['server', 'watch', 'lint']);
+gulp.task('default', ['bower', 'sass', 'watch', 'lint']);
 
 
 
