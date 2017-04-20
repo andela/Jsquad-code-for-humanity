@@ -1,9 +1,11 @@
 {
   "root": true,
   "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "env": {
     "node": true,
-    "esversion": 6,
     "mocha": true
   },
   "rules": {
