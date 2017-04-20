@@ -13,7 +13,7 @@
     "npm": "1.2.x"
   },
   "scripts": {
-    "travis:test": "istanbul cover _mocha test/**/** -- -R spec",
+    "travis:test": "istanbul cover _mocha test/backend/**/** -- -R spec",
     "start": "node node_modules/grunt-cli/bin/grunt",
     "test": "node node_modules/grunt-cli/bin/grunt test",
     "postinstall": "node node_modules/grunt-cli/bin/grunt install"
