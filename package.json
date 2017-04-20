@@ -15,6 +15,7 @@
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
+    "travis:test": "istanbul cover _mocha test/backend/**/** -- -R spec",
     "postinstall": "gulp dobower"
   },
   "dependencies": {
