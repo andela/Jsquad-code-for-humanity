@@ -7,3 +7,5 @@ c4h_keys.txt
 .swp
 .vscode
 .idea
+coverage
+coverage/
