@@ -1,3 +1,2 @@
-jshint:
+eslint:
   config_file: .eslintrc.json
-  
