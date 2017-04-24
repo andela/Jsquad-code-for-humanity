@@ -1,11 +1,15 @@
-var async = require('async');
-var express = require('express');
-var UserSchema  = require('../app/models/user');
-var jwt = require('jsonwebtoken');
+const async = require('async');
+const express = require('express');
+const UserSchema = require('../app/models/user');
+const jwt = require('jsonwebtoken');
+const index = require('../app/controllers/index');
+const answers = require('../app/controllers/answers');
+const questions = require('../app/controllers/questions');
+const avatars = require('../app/controllers/avatars');
+const users = require('../app/controllers/users');
 
 module.exports = function (app, passport, auth) {
     //User Routes
-    var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
     app.get('/signup', users.signup);
     app.get('/chooseavatars', users.checkAvatar);
@@ -70,57 +74,27 @@ module.exports = function (app, passport, auth) {
     //Finish with setting up the userId param
     app.param('userId', users.user);
 
-    // Answer Routes
-    var answers = require('../app/controllers/answers');
+
     app.get('/answers', answers.all);
     app.get('/answers/:answerId', answers.show);
     // Finish with setting up the answerId param
     app.param('answerId', answers.answer);
 
     // Question Routes
-    var questions = require('../app/controllers/questions');
+
     app.get('/questions', questions.all);
     app.get('/questions/:questionId', questions.show);
     // Finish with setting up the questionId param
     app.param('questionId', questions.question);
 
-    // Avatar Routes
-    var avatars = require('../app/controllers/avatars');
     app.get('/avatars', avatars.allJSON);
 
     //Home route
-    var index = require('../app/controllers/index');
+
     app.get('/play', index.play);
     app.get('/', index.render);
 
-    //API ROUTE
-    var apiRouter = express.Router();
-
-    //authentication
-    apiRouter.post('/authenticate', function(req, res) {
-
-        //check if email exists
-        email: req.body.email
-    }, function (err, email) {
-        if (err) throw err;
-        if (!email){
-            res.json({ success: false, message: 'Authentication failed. Email does not exist.' });
-        } else {
-            if (email.password != req.body.hashed_password) {
-                res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-            } else {
-                var token = jwt.sign(user, app.get('superSecret'), {
-
-                    // expires in 24 hours
-                    expiresIn: 1440
-
-                });
-      }
-    }
-  });
-
-
-
+    app.post('/api/users/login', users.loginWithEmail)
 
 };
 
