@@ -77,7 +77,7 @@ gulp.task('server', ['startnodemon'], () => {
 });
 
 // Default task(s).
-gulp.task('default', ['startnodemon', 'bower', 'sass', 'watch']);
+gulp.task('default', ['startnodemon', 'bower', 'sass', 'watch', 'lint']);
 
 
 

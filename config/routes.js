@@ -98,48 +98,5 @@ module.exports = function (app, passport, auth) {
   app.get('/play', index.play);
   app.get('/', index.render);
 
-  // app.get('/show', function (req, res) {
-  //   res.send('Hello! The API is at http://localhost:' + port + '/api');
-  // });
-
-
-  // const apiRoute = express.Router();
-
-  // apiRoute.get('/xxx', function (req, res) {
-  //   res.json({ message: 'Welcome to the coolest API on earth!' });
-  // });
-
-
-  app.post('/api/authenticate', users.loginWithEmail);
-  // apiRoute.post('/authenticate', function (res, req) {
-  //   //   // exports.loginWithEmail = function (req, res) {
-  //   //   //   get the user credentials from form  req.body.password
-  //   //   //    req.body.email
-  //   //   //   console.log(req.body);
-  // User
-  //   .findOne({
-  //     email: req.body.email
-  //   }, function (user) {
-  //     // compare the password
-  //     if (!user) {
-  //       res.json({ success: false, message: 'authentication failed' });
-  //     } else {
-  //       if (user.authenticate(req.body.password)) {
-  //         console.log('nate');
-
-  //         var token = jwt.sign(user, app.get('my_secret'), {
-  //           expiresInMinutes: 1400
-  //         });
-  //         console.log('waiyaki');
-  //         res.json({
-  //           success: true,
-  //           token
-  //         });
-  //       } else {
-  //         res.json({ success: false, message: 'authentication failed' });
-  //       }
-  //     }
-  //   });
-  // });
-  // app.use('/api', apiRoute);
+  app.post('/api/auth/login', users.loginWithEmail);
 };

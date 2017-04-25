@@ -1,13 +1,11 @@
-/**
- * Module dependencies.
- */
-const mongoose = require('mongoose'),
 
-  User = mongoose.model('User');
+const mongoose = require('mongoose');
 const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
 
-const secret = 'secretoverhere';
+const User = mongoose.model('User');
+
+const secretKey = process.env.SECRET_TOKEN_KEY;
 
 // Auth callback
 exports.authCallback = function (req, res) {
@@ -81,7 +79,7 @@ exports.create = function (req, res, next) {
           if (err) {
             return res.render('/#!/signup?error=unknown', {
               errors: err.errors,
-              user // thomas
+              user
             });
           }
           req.logIn(user, function (err) {
@@ -175,7 +173,8 @@ exports.loginWithEmail = function (req, res) {
   // req.body.email
   User
     .findOne({ email: req.body.email })
-    .then((user) => {
+    .then((user, err) => {
+      if (err) throw err;
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -186,7 +185,7 @@ exports.loginWithEmail = function (req, res) {
         });
       }
 
-      const token = jwt.sign(user._id, secret, {
+      const token = jwt.sign(user._id, secretKey, {
         expiresIn: '24h'
       });
 
@@ -195,31 +194,3 @@ exports.loginWithEmail = function (req, res) {
     });
 };
 
-// use the email find user user.finOne({email})
-//  compare the passwords
-// if fails return res that user has invalind password
-// createToken based on user id {_id: nkakjnajd87iyiuweyqiqoy}
-
-// send back response {user and token}
-
-// exports.AuthoriseUser = function (req, res, next) {
-//   //  get the token from headers [x-access-token][muse-access-token]
-//   // decrtypt the token
-//   // if fails res that invalid token
-//   // use the id from the decrypted token
-//   // find the use with this id from database user.findById(id)
-//   // add the decoded object to req (req.decoded = user)
-//   // call next()
-// };
-// exports.signupWithEmail = function (req, res) {
-//   User
-//     .findOne({ email: req.body.email })
-//     .then(user => {
-//       //compare the password
-//       if (!user) {
-//         res.json({ success: false, message: 'authentication failed' });
-//       }
-//       else {
-
-
-//       }
