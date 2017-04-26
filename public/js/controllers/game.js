@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', '$http', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, $http, game, $timeout, $location, MakeAWishFactsService, $dialog) {
     $scope.hasPickedCards = false;
     $scope.winningCardPicked = false;
     $scope.showTable = false;
@@ -35,6 +35,10 @@ angular.module('mean.system')
         return {};
       }
     };
+
+    $http.get('api/search/users').success((data) => {
+      $scope.invitePlayers = data;
+    })
 
     $scope.sendPickedCards = function() {
       game.pickCards($scope.pickedCards);
@@ -162,8 +166,8 @@ angular.module('mean.system')
           if(!$scope.modalShown){
             setTimeout(function(){
               var link = document.URL;
-              var txt = 'Give the following link to your friends so they can join your game: ';
-              $('#lobby-how-to-play').text(txt);
+              var txt = 'Invite friends by searching there names: ';
+              $('#lobby-how-to-play').text(txt);G
               $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
             }, 200);
             $scope.modalShown = true;
