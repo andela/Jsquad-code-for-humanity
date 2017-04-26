@@ -10,7 +10,7 @@ const options = {
 
 const cfhPlayer1 = { 'name': 'Tom' };
 const cfhPlayer2 = { 'name': 'Sally' };
-cosnt cfhPlayer3 = { 'name': "Dana" };
+const cfhPlayer3 = { 'name': "Dana" };
 
 describe('Game Server', function () {
 

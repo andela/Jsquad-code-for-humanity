@@ -168,13 +168,33 @@ exports.user = function (req, res, next, id) {
     });
 };
 
+exports.signupWithEmail = function (req, res) {
+  // get the user credentials from form  req.body.password
+  // req.body.email
+  User
+    .findOne({ email: req.body.email })
+    .then((existingUser, err) => {
+      if (err) throw err;
+      if (existingUser) {
+        return res.json({ message: 'A user with this email address already exists' });
+      }
+
+      const token = jwt.sign(existingUser._id, secretKey, {
+        expiresIn: '24h'
+      });
+
+      existingUser.password = null;
+      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
+    });
+};
+
+
 exports.loginWithEmail = function (req, res) {
   // get the user credentials from form  req.body.password
   // req.body.email
   User
     .findOne({ email: req.body.email })
-    .then((user, err) => {
-      if (err) throw err;
+    .then((user) => {
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -191,24 +211,6 @@ exports.loginWithEmail = function (req, res) {
 
       user.password = null;
       res.status(200).json(Object.assign({}, user._doc, { token }));
-    });
-};
-
-exports.signupWithEmail = function (req, res) {
-  // get the user credentials from form  req.body.password
-  // req.body.email
-  User
-    .findOne({ email: req.body.email })
-    .then((existingUser, err) => {
-      if (err) throw err;
-      if (existingUser) {
-        return res.json({ message: 'A user with this email address already exists' });
-      }
-      const token = jwt.sign(existingUser._id, secretKey, {
-        expiresIn: '24h'
-      });
-
-      existingUser.password = null;
-      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
-    });
+    })
+    .catch(error => res.status(400).json(error));
 };
