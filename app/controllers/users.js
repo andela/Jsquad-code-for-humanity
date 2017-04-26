@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /**
  * Module dependencies.
  */
@@ -9,6 +10,27 @@ var avatars = require('./avatars').all();
  * Auth callback
  */
 exports.authCallback = function(req, res, next) {
+=======
+
+const mongoose = require('mongoose');
+const avatars = require('./avatars').all();
+const jwt = require('jsonwebtoken');
+
+const User = mongoose.model('User');
+
+const secretKey = process.env.SECRET_TOKEN_KEY;
+// const generateToken = function (user) {
+//   console.log(user);
+//   return jwt.sign(user, env.SECRET_TOKEN_KEY, {
+//     expiresIn: '24h' // in a day
+//   });
+// }
+
+
+
+// Auth callback
+exports.authCallback = function (req, res) {
+>>>>>>> Stashed changes
   res.redirect('/chooseavatars');
 };
 
@@ -185,4 +207,53 @@ exports.user = function(req, res, next, id) {
       req.profile = user;
       next();
     });
+<<<<<<< Updated upstream
 };
+=======
+};
+
+exports.loginWithEmail = function (req, res) {
+  // get the user credentials from form  req.body.password
+  // req.body.email
+  User
+    .findOne({ email: req.body.email })
+    .then((user, err) => {
+      if (err) throw err;
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+
+      if (!user.authenticate(req.body.password)) {
+        return res.status(403).json({
+          message: 'Invalid password'
+        });
+      }
+
+      const token = jwt.sign(user._id, secretKey, {
+        expiresIn: '24h'
+      });
+
+      user.password = null;
+      res.status(200).json(Object.assign({}, user._doc, { token }));
+    });
+};
+
+exports.signupWithEmail = function (req, res) {
+  // get the user credentials from form  req.body.password
+  // req.body.email
+  User
+    .findOne({ email: req.body.email })
+    .then((existingUser, err) => {
+      if (err) throw err;
+      if (existingUser) {
+        return res.json({ message: 'A user with this email address already exists' });
+      }
+      const token = jwt.sign(existingUser._id, secretKey, {
+        expiresIn: '24h'
+      });
+
+      existingUser.password = null;
+      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
+    });
+};
+>>>>>>> Stashed changes
