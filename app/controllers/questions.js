@@ -3,8 +3,8 @@
  */
 const mongoose = require('mongoose');
 // const async = require('async'),
-const Question = mongoose.model('Question'),
-  _ = require('underscore');
+const Question = mongoose.model('Question');
+// const _ = require('underscore');
 
 
 // Find question by id

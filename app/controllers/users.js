@@ -194,3 +194,21 @@ exports.loginWithEmail = function (req, res) {
     });
 };
 
+exports.signupWithEmail = function (req, res) {
+  // get the user credentials from form  req.body.password
+  // req.body.email
+  User
+    .findOne({ email: req.body.email })
+    .then((existingUser, err) => {
+      if (err) throw err;
+      if (existingUser) {
+        return res.json({ message: 'A user with this email address already exists' });
+      }
+      const token = jwt.sign(existingUser._id, secretKey, {
+        expiresIn: '24h'
+      });
+
+      existingUser.password = null;
+      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
+    });
+};

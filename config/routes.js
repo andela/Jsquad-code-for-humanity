@@ -99,4 +99,5 @@ module.exports = function (app, passport, auth) {
   app.get('/', index.render);
 
   app.post('/api/auth/login', users.loginWithEmail);
+  app.post('/api/auth/signup', users.signupWithEmail);
 };
