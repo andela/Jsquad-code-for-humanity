@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
+const promise = require('promise');
 
 const User = mongoose.model('User');
-
 const secretKey = process.env.SECRET_TOKEN_KEY;
 
 // Auth callback
@@ -74,6 +75,10 @@ exports.create = function (req, res, next) {
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
+        const token = jwt.sign(user._id, secretKey, {
+          expiresIn: '24h'
+        });
+        res.status(200).json(Object.assign({}, User._doc, { token }));
         user.save(function (err) {
           if (err) {
             return res.render('/#!/signup?error=unknown', {
@@ -193,21 +198,5 @@ exports.loginWithEmail = function (req, res) {
     });
 };
 
-exports.signupWithEmail = function (req, res) {
-  // get the user credentials from form  req.body.password
-  // req.body.email
-  User
-    .findOne({ email: req.body.email })
-    .then((existingUser, err) => {
-      if (err) throw err;
-      if (existingUser) {
-        return res.json({ message: 'A user with this email address already exists' });
-      }
-      const token = jwt.sign(existingUser._id, secretKey, {
-        expiresIn: '24h'
-      });
 
-      existingUser.password = null;
-      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
-    });
-};
+

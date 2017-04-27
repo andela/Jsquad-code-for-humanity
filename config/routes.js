@@ -9,6 +9,7 @@ const avatars = require('../app/controllers/avatars');
 const users = require('../app/controllers/users');
 const mongoose = require('mongoose'),
   User = mongoose.model('User');
+
 // const dev = require('../config/development');
 const port = process.env.PORT || 3000;
 
@@ -99,6 +100,5 @@ module.exports = function (app, passport, auth) {
   app.get('/', index.render);
 
   app.post('/api/auth/login', users.loginWithEmail);
-  app.post('/api/auth/signup', users.signupWithEmail);
 
 };
