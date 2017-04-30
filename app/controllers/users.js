@@ -1,8 +1,7 @@
+
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
-const promise = require('promise');
 
 const User = mongoose.model('User');
 const secretKey = process.env.SECRET_TOKEN_KEY;
@@ -177,8 +176,7 @@ exports.loginWithEmail = function (req, res) {
   // req.body.email
   User
     .findOne({ email: req.body.email })
-    .then((user, err) => {
-      if (err) throw err;
+    .then((user) => {
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
@@ -195,8 +193,6 @@ exports.loginWithEmail = function (req, res) {
 
       user.password = null;
       res.status(200).json(Object.assign({}, user._doc, { token }));
-    });
+    })
+    .catch(error => res.status(400).json(error));
 };
-
-
-
