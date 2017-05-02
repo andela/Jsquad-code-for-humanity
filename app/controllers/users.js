@@ -77,7 +77,6 @@ exports.create = function (req, res, next) {
         const token = jwt.sign(user._id, secretKey, {
           expiresIn: '24h'
         });
-        res.status(200).json(Object.assign({}, User._doc, { token }));
         user.save(function (err) {
           if (err) {
             return res.render('/#!/signup?error=unknown', {
