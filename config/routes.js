@@ -99,4 +99,4 @@ module.exports = function (app, passport, auth) {
   app.get('/', index.render);
 
   app.post('/api/auth/login', users.loginWithEmail);
-
+};
