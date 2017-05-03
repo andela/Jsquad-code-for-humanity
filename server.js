@@ -4,6 +4,7 @@ const fs = require('fs');
 const passport = require('passport');
 const logger = require('mean-logger');
 const io = require('socket.io');
+const jwt = require("jsonwebtoken")
 const app = express();
 
 /**
