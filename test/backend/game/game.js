@@ -1,4 +1,5 @@
 const io = require('socket.io-client');
+require('should');
 
 const socketURL = 'http://localhost:3000';
 
