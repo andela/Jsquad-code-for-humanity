@@ -43,11 +43,6 @@
     "gulp-mocha": "^4.3.0",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^3.1.0",
-<<<<<<< HEAD
-    "coveralls": "^2.13.0",
-    "express-jwt": "^5.3.0",
-=======
->>>>>>> 21b673993a2d63335f5d486a1d698a2ebd9e4073
     "jsonwebtoken": "^7.3.0",
     "karma-firefox-launcher": "^1.0.1",
     "karma-phantomjs-launcher": "^1.0.4",
