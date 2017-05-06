@@ -64,27 +64,24 @@ exports.checkAvatar = function (req, res) {
 
 // Create user
 
-exports.create = function (req, res, next) {
+exports.create = (req, res) => {
   if (req.body.name && req.body.password && req.body.email) {
     User.findOne({
       email: req.body.email
-    }).exec(function (err, existingUser) {
+    }).exec((err, existingUser) => {
       if (!existingUser) {
         const user = new User(req.body);
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
-        const token = jwt.sign(user._id, secretKey, {
-          expiresIn: '24h'
-        });
-        user.save(function (err) {
+        user.save((err) => {
           if (err) {
             return res.render('/#!/signup?error=unknown', {
               errors: err.errors,
               user
             });
           }
-          req.logIn(user, function (err) {
+          req.logIn(user, (err) => {
             if (err) return next(err);
             return res.redirect('/#!/');
           });
@@ -168,6 +165,35 @@ exports.user = function (req, res, next, id) {
       req.profile = user;
       next();
     });
+};
+
+exports.signUp = (req, res) => {
+  if (req.body.name && req.body.password && req.body.email) {
+    User.findOne({
+      email: req.body.email
+    }).exec((err, existingUser) => {
+      if (!existingUser) {
+        const user = new User(req.body);
+        // Switch the user's avatar index to an actual avatar url
+        user.avatar = avatars[user.avatar];
+        user.provider = 'jwt';
+        user.save((err) => {
+          if (err) {
+            return res.status(400).json({ message: 'Could not create user' });
+          }
+          const token = jwt.sign({ data: user._id }, secretKey, {
+            expiresIn: '24h'
+          });
+          // Send token
+          res.status(200).json(Object.assign({}, user.id, user.name, user.email, { token }));
+        });
+      } else {
+        return res.status(400).json({ message: 'The user already exists' });
+      }
+    });
+  } else {
+    return res.status(400).json({ message: 'Name, email and password are required' });
+  }
 };
 
 exports.loginWithEmail = function (req, res) {
