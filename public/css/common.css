@@ -89,8 +89,11 @@ body {
   margin-left: 0; }
 
 .content {
-  margin-top: 50px;
-  width: 70%; }
+  margin-top: 200px;
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 200px;
+  width: 500px; }
 
 #main-container {
   height: 100%; }
@@ -856,7 +859,7 @@ body {
 .gradientButton {
   width: 80% !important;
   margin-top: 8px !important;
-  background: #f4781f !important;
+  background: #28aeff !important;
   -webkit-border-radius: 8px !important;
   -moz-border-radius: 8px !important;
   border-radius: 8px !important;

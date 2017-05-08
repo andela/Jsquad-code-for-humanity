@@ -64,14 +64,14 @@
 }
 
 .some-text {
-   text-align: center;
-   color: white;
+   text-align: left;
+   color: #000;
    max-width: 800px;
    margin: 0 30px;
 }
 
 #give {
-   color: white;
+   color: #000;
    text-align: center;
 }
 
@@ -81,7 +81,8 @@
 }
 
 #wish {
-   max-width: 25%;
+    max-width: 15%;
+    background-color: #000;
 }
 
 
@@ -346,6 +347,7 @@
  #slogan {
    text-align: center;
    color: #000;
+   font-weight: 400;
  }
  #slogan2 {
    text-align: center;
@@ -353,14 +355,13 @@
    font-size: 25px;
    font-weight: 300;
  }
-
  .wpb-teaser .wpb-text p {
    color: #000;
    padding-top: 15px;
    text-align: center;
    font-size: 1.15em;
    margin: 0 auto;
-   width: 84%;
+   width: 50%;
    max-width: 585px;
    padding-bottom: 20px;
  }
@@ -486,6 +487,7 @@
 
  #how-to-cards {
    text-align: center;
+   margin-left: 7%;
  }
 
  #how-to-container {
@@ -958,7 +960,8 @@
    border-radius: 8px;
    background: #252525;
    padding: 5px 5px 5px 13px;
-   width: 90%;
+   width: 1140px;
+   text-align: center;
    margin: 30px auto;
  }
 
@@ -1006,10 +1009,10 @@
   box-sizing: border-box;
   width: 17.5%;
   height: 215px;
-  padding: 1%;
-  margin: 1%;
-  background-color: #fff;
-  border-radius: 8px;
+  padding: 3%;
+  margin: 3%;
+  background-color: #d9d;
+  border-radius: 20px;
   color: #252525;
   font-family: Arial;
   font-size: 1.1em;
@@ -1161,7 +1164,7 @@
       font-weight: bold;
       font-size: 1.6em;
       /*text-transform: uppercase;*/
-      text-align: center;
+      text-align: left;
       line-height: 24px;
    }
 
