@@ -168,7 +168,7 @@ exports.user = function (req, res, next, id) {
 };
 
 exports.signUp = (req, res) => {
-  if (!req.body.name && req.body.password && req.body.email) {
+  if (!(req.body.name && req.body.password && req.body.email)) {
     return res.status(500).json({ message: 'User credentials required' });
   }
   const user = new User(req.body);
