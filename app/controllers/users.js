@@ -168,32 +168,22 @@ exports.user = function (req, res, next, id) {
 };
 
 exports.signUp = (req, res) => {
-  if (req.body.name && req.body.password && req.body.email) {
-    User.findOne({
-      email: req.body.email
-    }).exec((err, existingUser) => {
-      if (!existingUser) {
-        const user = new User(req.body);
-        // Switch the user's avatar index to an actual avatar url
-        user.avatar = avatars[user.avatar];
-        user.provider = 'jwt';
-        user.save((err) => {
-          if (err) {
-            return res.status(400).json({ message: 'Could not create user' });
-          }
-          const token = jwt.sign({ data: user._id }, secretKey, {
-            expiresIn: '24h'
-          });
-          // Send token
-          res.status(200).json(Object.assign({}, user.id, user.name, user.email, { token }));
-        });
-      } else {
-        return res.status(400).json({ message: 'The user already exists' });
-      }
-    });
-  } else {
-    return res.status(400).json({ message: 'Name, email and password are required' });
+  if (!req.body.name && req.body.password && req.body.email) {
+    return res.status(400).json({ message: 'Use credentials required' });
   }
+  const user = new User(req.body);
+  // Switch the user's avatar index to an actual avatar url
+  user.avatar = avatars[user.avatar];
+  user.provider = 'jwt';
+  user.save((err) => {
+    if (err) {
+      return res.status(400).json({ message: 'Could not create user' });
+    }
+    const token = jwt.sign({ data: user._id }, secretKey, {
+      expiresIn: '24h'
+    });
+    res.status(200).json(Object.assign({}, user._doc, { token }));
+  });
 };
 
 exports.loginWithEmail = function (req, res) {
