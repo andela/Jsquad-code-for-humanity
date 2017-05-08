@@ -11,7 +11,7 @@ const Question = mongoose.model('Question');
 exports.question = function (req, res, next, id) {
   Question.load(id, function (err, question) {
     if (err) return next(err);
-    if (!question) return next(new Error('Failed to load question ' + id));
+    if (!question) return next(new Error(`Failed to load question ${id}`));
     req.question = question;
     next();
   });
