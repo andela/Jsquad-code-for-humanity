@@ -169,7 +169,7 @@ exports.user = function (req, res, next, id) {
 
 exports.signUp = (req, res) => {
   if (!req.body.name && req.body.password && req.body.email) {
-    return res.status(400).json({ message: 'Use credentials required' });
+    return res.status(500).json({ message: 'User credentials required' });
   }
   const user = new User(req.body);
   // Switch the user's avatar index to an actual avatar url
@@ -177,7 +177,7 @@ exports.signUp = (req, res) => {
   user.provider = 'jwt';
   user.save((err) => {
     if (err) {
-      return res.status(400).json({ message: 'Could not create user' });
+      return res.status(500).json({ message: 'Could not create user' });
     }
     const token = jwt.sign({ data: user._id }, secretKey, {
       expiresIn: '24h'
