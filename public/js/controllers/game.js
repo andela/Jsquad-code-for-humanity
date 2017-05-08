@@ -124,6 +124,24 @@ angular.module('mean.system')
         $location.path('/');
       };
 
+      // adds methods shuffleCards when czar clicks on blackcard
+      $scope.shuffleCards = () => {
+        const card = $('#new-game-card');
+        card.addClass('animated flipOutX');
+        $timeout(() => {
+          $scope.startNextRound();
+          card.removeClass('animated flipOutX');
+          $('#closeModal').click();
+        }, 2000);
+      };
+
+      // adds method startNextRound to start a new game after Czar clicks card
+      $scope.startNextRound = () => {
+        if ($scope.isCzar()) {
+          game.startNextRound();
+        }
+      };
+
       // Catches changes to round to update when no players pick card
       // (because game.state remains the same)
       $scope.$watch('game.round', function () {
@@ -142,6 +160,27 @@ angular.module('mean.system')
         if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
           $scope.showTable = true;
         }
+
+        // when czar is to pick card
+        if ($scope.isCzar() && game.state === 'pick black card'
+          && game.state !== 'game dissolved'
+          && game.state !== 'awaiting players' && game.table.length === 0) {
+          displayMessage('', '#card-modal'); // div of blackcard
+        }
+
+        // when czar is drawing a card
+        if ($scope.isCzar() === false && game.state === 'pick black card'
+          && game.state !== 'game dissolved'
+          && game.state !== 'awaiting players' && game.table.length === 0) {
+          $scope.czarHasDrawn = 'Wait! Czar is drawing Card';
+        }
+
+        // after czar has drawn the card
+        if (game.state !== 'pick black card'
+          && game.state !== 'awaiting players'
+          && game.state !== 'game dissolve') {
+          $scope.czarHasDrawn = '';
+        }
       });
 
       $scope.$watch('game.gameID', function () {
@@ -159,7 +198,7 @@ angular.module('mean.system')
                 const link = document.URL;
                 const txt = 'Give the following link to your friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
-                $('#oh-el').css({ 'text-align': 'center', 'font-size': '22px', background: 'white', color: 'black' }).text(link);
+                $('#oh-el').css({ 'text-align': 'center', 'font-size': '22px', 'background': 'white', 'color': 'black' }).text(link);
               }, 200);
               $scope.modalShown = true;
             }
@@ -176,3 +215,4 @@ angular.module('mean.system')
         game.joinGame();
       }
     }]);
+
