@@ -9,3 +9,4 @@ c4h_keys.txt
 .idea
 coverage
 coverage/
+.env
