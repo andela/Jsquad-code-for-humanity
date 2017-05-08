@@ -533,17 +533,17 @@ body {
                 }
 
                 .hcount .count-o {
-                    display: none !important;
-                    width: 0 !important;
+                    display: none ;
+                    width: 0 ;
                 }
 
                 .count-0 {
-                    width: 0 !important;
+                    width: 0 ;
                 }
 
                 .count-ready .count-o  {
                     visibility: visible;
-                    visibility: hidden !important;
+                    visibility: hidden ;
                 }
             }
         }
@@ -1277,25 +1277,25 @@ body {
 
 //Attempt to Modify our Charity Banner
 .crDonateWidget  {
-    -webkit-box-shadow:0000 transparent !important;
-    -moz-box-shadow:0000 transparent !important;
-    box-shadow:0000 transparent !important;
-    -webkit-border-radius: 8px !important;
-    -moz-border-radius: 8px !important;
-    border-radius: 8px !important;
+    -webkit-box-shadow:0000 transparent ;
+    -moz-box-shadow:0000 transparent ;
+    box-shadow:0000 transparent ;
+    -webkit-border-radius: 8px ;
+    -moz-border-radius: 8px ;
+    border-radius: 8px ;
 }
 
 .crDonateWidgetOuter  {
     text-align: center;
-    background-color: transparent !important;
-    -webkit-box-shadow:0000 rgba(0,0,0,0.0) !important;
-    box-shadow:0000 rgba(0,0,0,0.0) !important;
-    border:0 solid #e6e6e6 !important;
-    margin:00 !important;
+    background-color: transparent ;
+    -webkit-box-shadow:0000 rgba(0,0,0,0.0) ;
+    box-shadow:0000 rgba(0,0,0,0.0) ;
+    border:0 solid #e6e6e6 ;
+    margin:00 ;
 }
 
 .crDonated {
-    margin-top: 2px !important;
+    margin-top: 2px ;
 }
 
 .crImageAndTitle {
@@ -1311,29 +1311,29 @@ body {
 }
 
 #crDonateWidget_cfhio_cards4humanity {
-    width: 90% !important;
-    margin-top: 67px !important;
+    width: 90% ;
+    margin-top: 67px ;
 
     .crDonateTriangle {
-        right: 6px !important;
+        right: 6px ;
     }
     h4 {
-        margin-bottom: 8px !important;
+        margin-bottom: 8px ;
     }
 }
 
 
 
 .gradientButton {
-    width: 80% !important;
-    margin-top: 8px !important;
-    background:  $blue-color !important;
-    -webkit-border-radius: 8px !important;
-    -moz-border-radius: 8px !important;
-    border-radius: 8px !important;
-    text-transform: none !important;
+    width: 80% ;
+    margin-top: 8px ;
+    background:  $blue-color ;
+    -webkit-border-radius: 8px ;
+    -moz-border-radius: 8px ;
+    border-radius: 8px ;
+    text-transform: none ;
     .donateNow {
-        border-top:0 solid black !important;
+        border-top:0 solid black ;
     }
 }
 
