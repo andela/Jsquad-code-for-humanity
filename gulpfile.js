@@ -51,7 +51,7 @@ gulp.task('pre-test', () => {
 });
 
 // Mocha test task
-gulp.task('test', ['pre-test'], () => gulp.src(['./test/**/*.js'], { read: false })
+gulp.task('test', ['pre-test'], () => gulp.src(['./test/backend/**/*.js'], { read: false })
   .pipe(mocha({ reporter: 'spec' }))
   .pipe(istanbul.writeReports())
   .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } }))
