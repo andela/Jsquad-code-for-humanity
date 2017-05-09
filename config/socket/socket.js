@@ -120,6 +120,7 @@ module.exports = function(io) {
       // the new game ID, causing the view to reload.
       // Also checking the number of players, so node doesn't crash when
       // no one is in this custom room.
+      }
       if (game.state === 'awaiting players' && game.players.length < 3){
         game.lessNotification('less players', player.socket.id);
       }
