@@ -65,18 +65,7 @@ html, body, .main-container, .cont, #first-section, #inner-container {
   height: 100%; }
 
 html {
-  /* IE10 Consumer Preview */
-  background-image: -ms-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
-  /* Mozilla Firefox */
-  background-image: -moz-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
-  /* Opera */
-  background-image: -o-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
-  /* Webkit (Safari/Chrome 10) */
-  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #0B394E), color-stop(1, #ABCE8D));
-  /* Webkit (Chrome 11+) */
-  background-image: -webkit-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
-  /* W3C Markup, IE10 Release Preview */
-  background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
+  background-color: #d9d9d9;
   background-attachment: fixed;
   background-repeat: no-repeat;
   position: relative; }
@@ -100,8 +89,11 @@ body {
   margin-left: 0; }
 
 .content {
-  margin-top: 50px;
-  width: 70%; }
+  margin-top: 200px;
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 200px;
+  width: 500px; }
 
 #main-container {
   height: 100%; }
@@ -115,7 +107,7 @@ body {
       -webkit-border-radius: 8px;
       -moz-border-radius: 8px;
       border-radius: 8px;
-      background: #252525;
+      background: #d9d9d9;
       margin-bottom: 10px;
       margin-top: 5px;
       padding: 5px; }
@@ -132,23 +124,25 @@ body {
           #main-container #app-container #menu-container #logo {
             font-size: 20px; } }
         #main-container #app-container #menu-container #logo #first-word {
-          color: #7CE4E8; }
+          color: #000; }
         #main-container #app-container #menu-container #logo #second-word {
-          color: #FFFFA5; }
+          color: #000; }
         #main-container #app-container #menu-container #logo #third-word {
-          color: #FC575E; }
+          color: #000; }
+        #main-container #app-container #menu-container #logo #some-word {
+          color: #28aeff; }
       #main-container #app-container #menu-container #abandon-game-button {
         display: inline-block;
         float: right;
         border-radius: 8px;
         -moz-border-radius: 8px;
         -webkit-border-radius: 8px;
-        font-size: 20px;
+        font-size: 30px;
         font-size: 1.25rem;
         font-weight: 400;
         text-align: center;
-        color: white;
-        background: #C54141;
+        color: #be2ba5;
+        background: #000;
         margin-top: 3px;
         margin-bottom: 3px;
         margin-right: 10px;
@@ -163,7 +157,7 @@ body {
             padding: 5px;
             width: 60px; } }
       #main-container #app-container #menu-container #abandon-game-button:hover {
-        background: #F34444; }
+        background: #d9d9d9; }
       #main-container #app-container #menu-container #tweet-container {
         float: right;
         padding-top: 10px;
@@ -204,7 +198,7 @@ body {
         padding-top: 4%;
         padding-bottom: 4%;
         min-height: 85px;
-        background: #7CE4E8;
+        background: #28aeff;
         margin: 0 0 6% 8%;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
@@ -865,7 +859,7 @@ body {
 .gradientButton {
   width: 80% !important;
   margin-top: 8px !important;
-  background: #f4781f !important;
+  background: #28aeff !important;
   -webkit-border-radius: 8px !important;
   -moz-border-radius: 8px !important;
   border-radius: 8px !important;

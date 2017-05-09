@@ -64,14 +64,14 @@
 }
 
 .some-text {
-   text-align: center;
-   color: white;
+   text-align: left;
+   color: #000;
    max-width: 800px;
    margin: 0 30px;
 }
 
 #give {
-   color: white;
+   color: #000;
    text-align: center;
 }
 
@@ -81,7 +81,8 @@
 }
 
 #wish {
-   max-width: 25%;
+    max-width: 15%;
+    background-color: #000;
 }
 
 
@@ -129,7 +130,7 @@
 
  /**** Links ****/
  a {
-   color: #60B197;
+   color: #28aeff;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -139,16 +140,16 @@
 
  a:hover {
    text-decoration: none;
-   color: #2ecc71;
+   color: #28aeff;
    border-radius:0px !important;
  }
 
  p a {
-   color: #60B197;
+   color: #28aeff;
  }
 
  p a:hover {
-   color: #2ecc71;
+   color: #28aeff;
  }
 
 
@@ -158,21 +159,33 @@
    -webkit-border-radius: 8px;
    -moz-border-radius: 8px;
    border-radius: 8px;
-   background: #252525;
+   background: #d9d9d9;
    margin: 10px 0;
    padding: 5px;
 }
 
 #landing-logo {
    margin: 5px 0 5px 0px;
-   font-size: 28px;
+   font-size: 35px;
    font-family: 'Lobster', cursive;
-   border-radius: 8px;
-   background: #252525;
+   border-radius: 20px;
+   background: #d9d9d9;
    padding: 5px 5px 5px 13px;
 }
-
-#first-word {
+#landing-logo img{
+  width: 9%;
+  margin-left: 50px;
+}
+#landing-logo2 {
+   margin: 5px 0 5px -60px;
+   width: 500px;
+   font-size: 25px;
+   font-family: 'Lobster', cursive;
+   border-radius: 20px;
+   background: #000;
+   padding: 5px 5px 5px 13px;
+}
+/*#first-word {
    color: #7CE4E8;
 }
 
@@ -182,10 +195,10 @@
 
 #third-word {
    color: #FC575E;
-}
+/*}*/
 
 #warning-word {
-   color: #FC575E;
+   color: #be2ba5;
 }
 
  .wpb-top-bar {
@@ -199,15 +212,15 @@
  }
 
  .wpb-logo-container {
-   color: #fff;
+   color: #000;
    font-weight: bold;
-   font-size: 11px;
+   font-size: 18px;
    max-width: 100%;
    margin-right: 9px;
  }
 
  .wpb-logo-container a {
-   color: #ffffff !important;
+   color: #be2ba5 !important;
  }
 
 
@@ -260,7 +273,7 @@
    -ms-transition: color 0.5s ease;
    -o-transition:  color 0.5s ease;
    transition:  color 0.5s ease;
-   text-transform: uppercase;
+   /*text-transform: uppercase;*/
    position: relative;
    z-index:1000;
  }
@@ -278,6 +291,10 @@
    width: 100%;
    margin-top: -11%;
    margin-bottom: 3%;
+   /*background-image:url('../img/muse.jpg');*/
+ }
+ #avatars img{
+   width: 100%;
  }
 
  #avatar-face {
@@ -290,7 +307,6 @@
    z-index:990;
    width: 90%;
    margin: 0px auto;
-   border-radius: 8px;
    margin-top: 70px;
    padding: 30px;
  }
@@ -303,7 +319,7 @@
    height: 100%;
    min-height: 100%;
    z-index:999;
-   background: #252525;
+   background: #d9d9d9;
    border-radius: 8px;
    padding: 20px;
  }
@@ -320,26 +336,32 @@
  }
 
  .wpb-teaser .wpb-slogan h2 {
-   color: #fff;
-   font-weight: bold;
-   font-size: 52px;
-   text-transform: uppercase;
-   line-height: 60px;
-   text-align: center;
+   color: #000;
+   font-weight: 300;
+   font-size: 45px;
+   /*text-transform: uppercase;*/
+   line-height: 70px;
+   text-align: left;
  }
 
  #slogan {
    text-align: center;
-   color: white;
+   color: #000;
+   font-weight: 400;
  }
-
+ #slogan2 {
+   text-align: center;
+   color: #d9d9d9;
+   font-size: 25px;
+   font-weight: 300;
+ }
  .wpb-teaser .wpb-text p {
-   color: #fff;
+   color: #000;
    padding-top: 15px;
    text-align: center;
    font-size: 1.15em;
    margin: 0 auto;
-   width: 84%;
+   width: 50%;
    max-width: 585px;
    padding-bottom: 20px;
  }
@@ -375,8 +397,10 @@
 
  #create {
     text-align: center;
-    color: white;
-    font-family: arial;
+    color: #d9d9d9;
+    font-size: large;
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-bottom: -13px;
  }
 
@@ -389,8 +413,8 @@
    font-size: 2em;
    font-weight: 400;
    text-align: center;
-   color: white;
-   background: #C54141;
+   color: #d9d9d9;
+   background: #000;
    margin-top: 3px;
    margin-bottom: 3px;
    margin-right: 10px;
@@ -407,8 +431,8 @@
    font-size: 1.35em;
    font-weight: 400;
    text-align: center;
-   color: white;
-   background: #C54141;
+   color: #000;
+   background: #be2ba5;
    margin-top: 3px;
    margin-bottom: 3px;
    margin-right: 10px;
@@ -440,14 +464,16 @@
 
  #login-buttons {
    text-align: center;
+   margin-bottom: 20px;
  }
 
  .login-item {
-   max-width: 48%;
+   max-width: 70px;
  }
 
  .input-info {
-   max-width: 100%;
+   max-width: 50%;
+   border-radius: 10px;
  }
 
  #how-to {
@@ -461,6 +487,7 @@
 
  #how-to-cards {
    text-align: center;
+   margin-left: 7%;
  }
 
  #how-to-container {
@@ -486,11 +513,11 @@
 
 #sign-up-text {
    margin: 0px auto;
-   font-size: 18px;
-   font-family: 'Lobster', cursive;
+   font-size: 30px;
+   /*font-family: 'Lobster', cursive;*/
    border-radius: 8px;
-   background: #252525;
-   margin-left: 40px;
+   /*background: #252525;*/
+   /*margin-left: 40px;*/
    overflow: hidden;
 }
 
@@ -905,7 +932,7 @@
    height: 100%;
    min-height: 100%;
    z-index:900;
-   background: #252525;
+   background: #d9d9d9;
  }
 
 
@@ -933,7 +960,8 @@
    border-radius: 8px;
    background: #252525;
    padding: 5px 5px 5px 13px;
-   width: 90%;
+   width: 1140px;
+   text-align: center;
    margin: 30px auto;
  }
 
@@ -981,10 +1009,10 @@
   box-sizing: border-box;
   width: 17.5%;
   height: 215px;
-  padding: 1%;
-  margin: 1%;
-  background-color: #fff;
-  border-radius: 8px;
+  padding: 3%;
+  margin: 3%;
+  background-color: #d9d;
+  border-radius: 20px;
   color: #252525;
   font-family: Arial;
   font-size: 1.1em;
@@ -1132,11 +1160,11 @@
    }
 
     .wpb-teaser .wpb-slogan h2 {
-      color: #fff;
+      color: #000;
       font-weight: bold;
       font-size: 1.6em;
-      text-transform: uppercase;
-      text-align: center;
+      /*text-transform: uppercase;*/
+      text-align: left;
       line-height: 24px;
    }
 

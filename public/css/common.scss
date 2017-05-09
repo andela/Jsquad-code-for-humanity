@@ -8,8 +8,15 @@ $mq-desktop: 1100px !default;
 $mq-custom-wide : 1200px !default;
 
 $color-background: #fff;
+$pink-color: #be2ba5;
+$blue-color: #28aeff;
+$black-color: #000;
+$white-color: #fff;
+$title-color: #252525;
+$background-color: #d9d9d9;
 
-@mixin gradient-bg {
+
+@mixin gradient-bg  {
 /* IE10 Consumer Preview */
 background-image: -ms-linear-gradient(top left, #0B394E 0%, #ABCE8D 100%);
 
@@ -30,111 +37,111 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
 }
 
 // Both portrait and landscape
-@mixin mobile-only {
-    @media (max-width : $mq-mobile-landscape) {
+@mixin mobile-only  {
+    @media (max-width : $mq-mobile-landscape)  {
         @content;
     }
 }
 
 // Everything up to and including the portrait width of the phone
 // Since it's the smallest query it doesn't need a min
-@mixin mobile-portrait-only {
-    @media (max-width : $mq-mobile-portrait) {
+@mixin mobile-portrait-only  {
+    @media (max-width : $mq-mobile-portrait)  {
         @content;
     }
 }
 
 // Everything up to and including the mobile portrait
-@mixin mobile-portrait-and-below {
-    @media (max-width : $mq-mobile-portrait) {
+@mixin mobile-portrait-and-below  {
+    @media (max-width : $mq-mobile-portrait)  {
         @content;
     }
 }
 
 // Everything above and including the mobile portrait
-@mixin mobile-portrait-and-up {
-    @media (min-width : $mq-mobile-portrait) {
+@mixin mobile-portrait-and-up  {
+    @media (min-width : $mq-mobile-portrait)  {
         @content;
     }
 }
 
 // Everthing larger than a portrait mobile up until mobile landscape
-@mixin mobile-landscape-only {
-    @media only screen and (min-width : $mq-mobile-portrait + 1) and (max-width : $mq-mobile-landscape) {
+@mixin mobile-landscape-only  {
+    @media only screen and (min-width : $mq-mobile-portrait + 1) and (max-width : $mq-mobile-landscape)  {
         @content;
     }
 }
 
 // Everything up to and including the mobile landscape width
-@mixin mobile-landscape-and-below {
-    @media only screen and (max-width : $mq-mobile-landscape) {
+@mixin mobile-landscape-and-below  {
+    @media only screen and (max-width : $mq-mobile-landscape)  {
         @content;
     }
 }
 
 // Everything above and including the mobile landscape width
-@mixin mobile-landscape-and-up {
-    @media only screen and (min-width : $mq-mobile-portrait + 1) {
+@mixin mobile-landscape-and-up  {
+    @media only screen and (min-width : $mq-mobile-portrait + 1)  {
         @content;
     }
 }
 
 // Both the portrait and landscape width of the tablet
 // Larger than a landscape mobile but less than or equal to a landscape tablet
-@mixin tablet-only {
-    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-landscape) {
+@mixin tablet-only  {
+    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-landscape)  {
         @content;
     }
 }
 
 // Everything larger than mobile landscape up until the portrait width of the tablet
-@mixin tablet-portrait-only {
-    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-portrait) {
+@mixin tablet-portrait-only  {
+    @media only screen and (min-width : $mq-mobile-landscape + 1) and (max-width : $mq-tablet-portrait)  {
         @content;
     }
 }
 
 // Everything below and including the portrait width of the tablet
-@mixin tablet-portrait-and-below {
-    @media only screen and (max-width : $mq-tablet-portrait) {
+@mixin tablet-portrait-and-below  {
+    @media only screen and (max-width : $mq-tablet-portrait)  {
         @content;
     }
 }
 
 // Larger than portrait but less than or equal to the landscape width
-@mixin tablet-landscape-only {
-    @media only screen and (min-width : $mq-tablet-portrait + 1) and (max-width : $mq-tablet-landscape) {
+@mixin tablet-landscape-only  {
+    @media only screen and (min-width : $mq-tablet-portrait + 1) and (max-width : $mq-tablet-landscape)  {
         @content;
     }
 }
 
 // Up to and including the tablet landscape
-@mixin tablet-landscape-and-below {
-    @media only screen and (max-width : $mq-tablet-landscape) {
+@mixin tablet-landscape-and-below  {
+    @media only screen and (max-width : $mq-tablet-landscape)  {
         @content;
     }
 }
 
 // Everything larger than a landscape tablet
-@mixin desktop-and-below {
-    @media only screen and (max-width : $mq-tablet-landscape + 1) {
+@mixin desktop-and-below  {
+    @media only screen and (max-width : $mq-tablet-landscape + 1)  {
         @content;
     }
 }
 
-@mixin custom-wide {
-    @media only screen and (min-width : $mq-custom-wide + 1) {
+@mixin custom-wide  {
+    @media only screen and (min-width : $mq-custom-wide + 1)  {
         @content;
     }
 }
 
-@mixin br{
+@mixin br {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
 
-@mixin br-bottom {
+@mixin br-bottom  {
     -webkit-border-bottom-right-radius: 8px;
     -webkit-border-bottom-left-radius: 8px;
     -moz-border-radius-bottomright: 8px;
@@ -143,10 +150,10 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     border-bottom-left-radius: 8px;
 }
 
-@mixin button {
-    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
+@mixin button  {
+    -moz-box-shadow: inset0 1px00 #ffffff;
+    -webkit-box-shadow: inset0 1px00 #ffffff;
+    box-shadow: inset0 1px00 #ffffff;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcfcfc), color-stop(1, #f0f0f0) );
     background: -moz-linear-gradient( center top, #fcfcfc 5%, #f0f0f0 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
@@ -163,8 +170,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     -webkit-border-bottom-left-radius: 8px;
     -moz-border-radius-bottomleft: 8px;
     border-bottom-left-radius: 8px;
-    text-indent: 0;
-    border: 1px solid #dcdcdc;
+    text-indent: 0;border: 1px solid #dcdcdc;
     display: inline-block;
     color: #777777;
     font-family: arial;
@@ -176,12 +182,12 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     width: 300px;
     text-decoration: none;
     text-align: center;
-    text-shadow: 1px 1px 0px #ffffff;
+    text-shadow: 1px 1px0 #ffffff;
     margin-top: 15px;
     cursor: pointer;
 }
 
-@mixin button-hover {
+@mixin button-hover  {
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0f0f0), color-stop(1, #ededed) );
     background: -moz-linear-gradient( center top, #f0f0f0 5%, #ededed 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#ededed');
@@ -190,7 +196,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
 }
 
 
-@mixin button-smaller {
+@mixin button-smaller  {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
     background-color: white;
     -webkit-border-top-left-radius: 8px;
@@ -207,7 +213,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     border-bottom-left-radius: 8px;
     text-indent: 0;
     display: inline-block;
-    color: #252525;
+    color:  $title-color;
     font-size: 39px;
     font-weight: bold;
     font-style: normal;
@@ -221,7 +227,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     display: block;
 }
 
-@mixin button-hover-smaller {
+@mixin button-hover-smaller  {
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0f0f0), color-stop(1, #ededed) );
     background: -moz-linear-gradient( center top, #f0f0f0 5%, #ededed 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#ededed');
@@ -229,10 +235,10 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     color: #4e4e4e;
 }
 
-@mixin button-smallest {
-    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
+@mixin button-smallest  {
+    -moz-box-shadow: inset0 1px00 #ffffff;
+    -webkit-box-shadow: inset0 1px00 #ffffff;
+    box-shadow: inset0 1px00 #ffffff;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fcfcfc), color-stop(1, #f0f0f0) );
     background: -moz-linear-gradient( center top, #fcfcfc 5%, #f0f0f0 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
@@ -262,13 +268,13 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     width: 100px;
     text-decoration: none;
     text-align: center;
-    text-shadow: 1px 1px 0px #ffffff;
+    text-shadow: 1px 1px0 #ffffff;
     cursor: pointer;
     margin: 5px auto;
     display: block;
 }
 
-@mixin button-hover-smallest {
+@mixin button-hover-smallest  {
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f0f0f0), color-stop(1, #ededed) );
     background: -moz-linear-gradient( center top, #f0f0f0 5%, #ededed 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f0f0', endColorstr='#ededed');
@@ -276,22 +282,22 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     color: #4e4e4e;
 }
 
-@mixin soft-button{
+@mixin soft-button {
     text-align: center;
     position: relative;
     font-weight: bold;
     @include br;
-    -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -moz-box-shadow: inset0 1px00 #ffffff;
+    -webkit-box-shadow: inset0 1px00 #ffffff;
+    box-shadow: inset0 1px00 #ffffff;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
     background-color: #D5D5D5;
     text-indent: 0;
-    text-shadow: 1px 1px 0px #ffffff;
+    text-shadow: 1px 1px0 #ffffff;
     cursor: pointer;
 }
 
-.card {
+.card  {
     position: relative;
 
     display: inline-block;
@@ -301,42 +307,42 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     padding: 1%;
     margin: 1%;
 
-    background-color: #fff;
+    background-color:  $white-color;
 
     border-radius: 8px;
 
-    color: #252525;
+    color:  $title-color;
     font-family: Arial;
     font-size: 20px;
     font-weight: bold;
 
     vertical-align: top;
 
-    @include mobile-only{
+    @include mobile-only {
         font-size: 14px;
         height: 115px;
         word-wrap: break-word;
     }
 
-    &.how-to {
+    &.how-to  {
         font-size: 1.4rem;
     }
 
-    #selection-number {
+    #selection-number  {
         position: absolute;
         bottom: 1px;
         left: 7px;
         font-size: 18px;
     }
 
-    &.black {
-        background: #252525;
+    &.black  {
+        background:  $title-color;
         border-color: white;
         color: white;
     }
 
-    &.longBlack {
-        background: #252525;
+    &.longBlack  {
+        background:  $title-color;
         border-color: white;
         color: white;
         height: 100%;
@@ -345,15 +351,15 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
         padding-right: 2%;
     }
 
-    &.smallest {
+    &.smallest  {
         font-size: 0.750em;
 
-        @include mobile-only{
+        @include mobile-only {
             font-size: 10px; //play with later
         }
     }
 
-    u {
+    u  {
         position: relative;
         content: '';
         display: inline-block;
@@ -365,15 +371,15 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
         border-bottom: 0.125em solid white;
         margin-bottom: -0.125em;
 
-        .small {
+        .small  {
             width: 25%;
         }
 
-        .big {
+        .big  {
             width: 75%;
         }
 
-        .end:after {
+        .end:after  {
             position: absolute;
             right: -0.357em;
             display: inline-block;
@@ -382,11 +388,11 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 }
 
-html, body, .main-container, .cont, #first-section, #inner-container{
+html, body, .main-container, .cont, #first-section, #inner-container {
     height: 100%;
 }
 
-html{
+html {
     // margin: 20px;
     // margin-top: 5px;
     // background: url(/img/minimal-wallpaper.jpg) no-repeat center center fixed;
@@ -394,99 +400,104 @@ html{
     // -moz-background-size: cover;
     // -o-background-size: cover;
     // background-size: cover;
-    @include gradient-bg;
+    // @include gradient-bg;
+    background-color:  $background-color;
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
 
-    @include mobile-only{
+    @include mobile-only {
         //margin: 3px;
-        margin-top: 0px;
+        margin-top:0;
     }
 }
-body{
+body {
     font-family: $main-font;
     background: transparent;
     margin: 10px;
 
-    @include tablet-portrait-only{
+    @include tablet-portrait-only {
         margin: 5px;
     }
 
-    @include mobile-only{
+    @include mobile-only {
         margin: 1px;
     }
 }
 
-.navbar .nav>li>a.brand {
+.navbar .nav>li>a.brand  {
     padding-left:20px;
     margin-left:0
 }
 
-.content {
-    margin-top:50px;
-    width:70%
+.content  {
+    margin-top:200px;
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 200px;
+    width: 500px;
 }
 
 
-#main-container{
+#main-container {
     height: 100%;
-    #app-container {
+    #app-container  {
         height: 100%;
         max-width: 1200px;
-        margin: 0px auto;
+        margin:0 auto;
         position: relative;
 
-        #menu-container{
+        #menu-container {
             width: 100%;
             -webkit-border-radius: 8px;
             -moz-border-radius: 8px;
             border-radius: 8px;
-            background: #252525;
+            background:  $background-color;
             margin-bottom: 10px;
             margin-top: 5px;
             padding: 5px;
 
-            @include mobile-only{
+            @include mobile-only {
                 margin-bottom: 1px;
-                margin-top: 0px;
+                margin-top:0;
             }
 
-            #logo{
+            #logo {
                 display: inline-block;
                 margin-left: 10px;
                 font-size: 28px;
                 font-family: 'Lobster', cursive;
 
-                @include mobile-only{
+                @include mobile-only {
                     font-size: 20px;
                 }
 
-                #first-word{
-                    color: #7CE4E8;
+                #first-word {
+                    color:  $black-color;
                 }
 
-                #second-word{
-                    color: #FFFFA5;
+                #second-word {
+                    color:  $black-color;
                 }
 
-                #third-word{
-                    color: #FC575E;
+                #some-word {
+                    color:  $blue-color;
                 }
+
             }
 
-            #abandon-game-button{
+            #abandon-game-button {
                 display: inline-block;
                 float:right;
                 border-radius: 8px;
                 -moz-border-radius: 8px;
                 -webkit-border-radius: 8px;
-                font-size: 20px;
+                font-size: 30px;
                 font-size: 1.25rem;
                 font-weight: 400;
                 text-align: center;
-                color: white;
-                background: #C54141;
+                color:  $pink-color;
+                background:  $black-color;
                 margin-top: 3px;
                 margin-bottom: 3px;
                 margin-right: 10px;
@@ -494,7 +505,7 @@ body{
                 width: 140px;
                 cursor: pointer;
 
-                @include mobile-only{
+                @include mobile-only {
                     font-size: 0.7rem;
                     margin-top: 5px;
                     margin-right: 1px;
@@ -503,17 +514,17 @@ body{
                 }
             }
 
-            #abandon-game-button:hover{
-               background:#F34444;
+            #abandon-game-button:hover {
+               background: $background-color;
             }
 
-            #tweet-container{
+            #tweet-container {
                 float: right;
                 padding-top: 10px;
                 width: 77px;
                 margin-right: 10px;
 
-                @include mobile-only{
+                @include mobile-only {
                     float: right;
                     padding-top: 6px;
                     width: 55px;
@@ -521,30 +532,30 @@ body{
                     margin-right: 11px;
                 }
 
-                .hcount .count-o{
-                    display: none !important;
-                    width: 0 !important;
+                .hcount .count-o {
+                    display: none ;
+                    width: 0 ;
                 }
 
-                .count-0{
-                    width: 0 !important;
+                .count-0 {
+                    width: 0 ;
                 }
 
-                .count-ready .count-o {
+                .count-ready .count-o  {
                     visibility: visible;
-                    visibility: hidden !important;
+                    visibility: hidden ;
                 }
             }
         }
 
-        #social-bar-container{
+        #social-bar-container {
             width: 20%;
             height: 63%;
             position: absolute;
             right: 0;
             top: 60px;
 
-            @include mobile-only{
+            @include mobile-only {
                 top: auto;
                 width: 100%;
                 height: 50px;
@@ -554,54 +565,54 @@ body{
                 // background: white;
             }
 
-            #player-container{
+            #player-container {
                 height: 13.166667%;
                 position: relative;
                 padding-top: 4%;
                 padding-bottom: 4%;
                 min-height: 85px;
-                background: #7CE4E8;
+                background:  $blue-color;
                 margin: 0 0 6% 8%;
                 @include br;
 
-                @include mobile-only{
+                @include mobile-only {
                     min-height: 0;
                     display: inline-block;
-                    margin: 0px .5%;
+                    margin:0 .5%;
                     width: 15.5%;
                     height: 48px;
                     padding-top: 1%;
                     padding-bottom: 0;
                 }
 
-                #above-czar-container{
+                #above-czar-container {
                     height: 65%;
                     width: 100%;
 
-                    @include mobile-only{
+                    @include mobile-only {
                         height: 100%;
                     }
 
-                    #avatar_ {
+                    #avatar_  {
                         height: 100%;
                         width: 38%;
                         float: left;
                         position: relative;
                         z-index: 999;
 
-                        #king {
+                        #king  {
                            position: absolute;
                            max-width: 80%;
                            bottom: 20px;
                            -webkit-transform: rotate(-18deg);
                            left: -5px;
 
-                           @include tablet-portrait-only {
+                           @include tablet-portrait-only  {
                                 max-width: 80%;
                                 bottom: 27px;
                            }
 
-                           @include mobile-only {
+                           @include mobile-only  {
                                 max-width: 80%;
                                 bottom: 31px;
                                 left: -3px;
@@ -609,7 +620,7 @@ body{
                          }
 
 
-                        img {
+                        img  {
                             width: 100%;
                             height: 140%;
                             float: left;
@@ -617,13 +628,13 @@ body{
                             min-width: 40px;
                             min-height: 40px;
 
-                            @include tablet-portrait-only{
+                            @include tablet-portrait-only {
                                 width: 100%;
                                 height: 100%;
                                 margin-left: 3px;
                             }
 
-                            @include mobile-only{
+                            @include mobile-only {
                                 height: 69%;
                                 width: 100%;
                                 min-height: 0;
@@ -632,7 +643,7 @@ body{
                             }
                         }
                     }
-                    #player-container-inner{
+                    #player-container-inner {
                         float: left;
                         position: relative;
                         bottom: 8px;
@@ -640,30 +651,30 @@ body{
                         max-width: 62%;
                         overflow: hidden;
 
-                        @include tablet-portrait-only{
+                        @include tablet-portrait-only {
                             left: 3px;
                         }
 
-                        @include mobile-only{
+                        @include mobile-only {
                             bottom: 0;
                             left: 0;
                             height: 100%;
                             width: 60%;
                         }
 
-                        #player-name{
+                        #player-name {
 
-                            h4{
+                            h4 {
                                 font-family: 'Lobster', cursive;
-                                margin-bottom: 0px;
+                                margin-bottom:0;
                             }
-                            h4{
+                            h4 {
 
-                                @include tablet-portrait-only{
+                                @include tablet-portrait-only {
                                     font-size: 14px;
                                 }
 
-                                @include mobile-only{
+                                @include mobile-only {
                                     font-family: 'Lobster', cursive;
                                     font-size: 10px;
                                     margin-top: 3px;
@@ -672,44 +683,44 @@ body{
                             }
                         }
 
-                        #player-score{
+                        #player-score {
                             float: left;
 
-                            h2{
+                            h2 {
 
                                 font-size: 26px;
                                 margin-top: 0;
                                 margin-bottom: 0;
 
-                                @include tablet-portrait-only{
+                                @include tablet-portrait-only {
                                     font-size: 21px;
                                 }
 
-                                @include mobile-only{
+                                @include mobile-only {
                                     font-size: 17px;
                                     line-height: 40%;
                                 }
                             }
                         }
 
-                        #player-star{
+                        #player-star {
                         float: left;
                         margin-top: 3px;
                         margin-left: 10px;
 
-                        @include tablet-portrait-only{
+                        @include tablet-portrait-only {
                             margin-top: 1px;
                             margin-left: 5px;
                         }
 
-                        @include mobile-only{
+                        @include mobile-only {
                             display: none;
                         }
 
-                            img {
+                            img  {
                                 width: 22px;
 
-                                @include tablet-portrait-only{
+                                @include tablet-portrait-only {
                                     width: 18px;
                                 }
                             }
@@ -717,7 +728,7 @@ body{
                     }
                 }
 
-                #czar-container {
+                #czar-container  {
                     position: absolute;
                     bottom: 0;
                     text-align: center;
@@ -726,16 +737,16 @@ body{
                     background: black;
                     opacity:0.4;
 
-                    @include mobile-only{
+                    @include mobile-only {
                         overflow: auto;
                     }
 
-                    #the-czar{
-                        color: #fff;
+                    #the-czar {
+                        color:  $white-color;
                         font-weight: bold;
                         font-size: 20px;
 
-                        @include mobile-only{
+                        @include mobile-only {
                             display: none;
                         }
                     }
@@ -743,49 +754,49 @@ body{
             }
         }
 
-        #gameplay-container{
+        #gameplay-container {
             height: 100%;
             width: 80%;
 
-            @include mobile-only{
+            @include mobile-only {
                 width: 100%;
                 height: 91%;
             }
 
-            #upper-gameplay-container {
+            #upper-gameplay-container  {
                 height: 28%;
                 width: 100%;
                 min-height: 220px;
                 max-height: 220px;
 
-                @include mobile-only{
+                @include mobile-only {
                     min-height: 140px;
                     max-height: 140px;
 
                 }
 
-                @include tablet-portrait-only{
+                @include tablet-portrait-only {
                     height: 16%;
                     min-height: 180px;
                     max-height: 180px;
                 }
 
-                #menu-timeremaining-container{
+                #menu-timeremaining-container {
                     float: left;
                     width: 19%;
                     height: 100%;
                     margin-right: 2%;
 
-                    @include tablet-portrait-only{
+                    @include tablet-portrait-only {
                         width: 21%;
                     }
 
-                    @include mobile-only{
+                    @include mobile-only {
                         width: 27%;
                         margin-right: 1%;
                     }
 
-                    #menu-container{
+                    #menu-container {
                         display: none;
                         @include soft-button;
                         height: 20%;
@@ -793,7 +804,7 @@ body{
                         line-height: 20%;
                         @include br;
 
-                        #menu-button{
+                        #menu-button {
                             position: absolute;
                             top: 50%;
                             left: 0;
@@ -801,22 +812,22 @@ body{
                         }
                     }
 
-                    #timer-container {
+                    #timer-container  {
                         height: 100%;
 
-                        #inner-timer-container{
+                        #inner-timer-container {
                             text-align: center;
                             @include soft-button;
-                            background: #FFF;
+                            background:  $white-color;
                             text-shadow: none;
                             cursor: default;
                             border: none;
                             min-width: 85px;
                             min-height: 85px;
                             height: 100%;
-                            color: #000;
+                            color:  $black-color;
 
-                            #timer-status-round, #timer-status-czar-choosing{
+                            #timer-status-round, #timer-status-czar-choosing {
                                 position: absolute;
                                 left: 0;
                                 right: 0;
@@ -824,16 +835,16 @@ body{
                                 padding-bottom: 8px;
                                 bottom: 0;
 
-                                @include tablet-landscape-and-below{
+                                @include tablet-landscape-and-below {
                                     font-size: 13px;
                                 }
 
-                                @include mobile-only{
+                                @include mobile-only {
                                     font-size: 12px;
                                 }
                             }
 
-                            #time{
+                            #time {
                                 font-family: 'Lobster', cursive;
                                 font-size: 110px;
                                 position: absolute;
@@ -841,11 +852,11 @@ body{
                                 left: 0;
                                 right: 0;
 
-                                @include tablet-landscape-and-below{
+                                @include tablet-landscape-and-below {
                                     font-size: 90px;
                                 }
 
-                                @include mobile-only{
+                                @include mobile-only {
                                     font-size: 73px;
                                 }
                             }
@@ -853,86 +864,86 @@ body{
                     }
                  }
 
-                #question-container-outer {
+                #question-container-outer  {
                     height: 100%;
                     float: left;
                     width: 79%;
 
-                    @include tablet-portrait-only{
+                    @include tablet-portrait-only {
                         width: 77%;
                         float: right;
                     }
 
-                    @include mobile-only{
+                    @include mobile-only {
                         float: left;
                         width: 71%;
                         margin-left: 1%;
                     }
 
-                    #question-container-inner{
+                    #question-container-inner {
                         width: 100%;
                         height: 100%;
-                        .card{
+                        .card {
                             width: 100%;
-                            margin: 0px auto;
+                            margin:0 auto;
                             display: block;
 
-                            #notifications {
+                            #notifications  {
                                 position: absolute;
                                 bottom: 0;
                                 right: 0;
                                 padding: 10px;
                             }
 
-                            #startGame{
+                            #startGame {
                                 width: 100%;
                                 overflow: hidden;
                                 height: 100%;
                                 position: absolute;
                                 right: 1%;
 
-                                #finding-players {
+                                #finding-players  {
                                     font-size: 33px;
                                     text-align: center;
                                     margin-top: 15px;
 
-                                    @include mobile-only{
+                                    @include mobile-only {
                                         font-size: 21px;
                                         margin-top: 0;
                                     }
                                 }
 
-                                #player-count-container, #loading-container, #start-game-container{
+                                #player-count-container, #loading-container, #start-game-container {
                                     width: 33.333%;
                                     float: left;
                                     text-align: center;
                                 }
 
-                                #player-count-container{
-                                    #player-count{
+                                #player-count-container {
+                                    #player-count {
                                         font-size: 33px;
 
-                                        @include mobile-only{
+                                        @include mobile-only {
                                             font-size: 21px;
                                         }
                                     }
-                                    #the-word-players{
+                                    #the-word-players {
                                         font-size: 17px;
                                     }
                                 }
 
-                                #loading-gif{
+                                #loading-gif {
                                     margin: 20px;
 
-                                    @include mobile-only{
+                                    @include mobile-only {
                                         margin-top: 5px;
                                     }
                                 }
 
-                                #start-game-container{
+                                #start-game-container {
                                     color: #333;
 
-                                    #start-game-button{
+                                    #start-game-button {
                                         border-radius: 8px;
                                         -moz-border-radius: 5px;
                                         -webkit-border-radius: 5px;
@@ -940,42 +951,42 @@ body{
                                         font-size: 1.25rem;
                                         font-weight: 400;
                                         color: white;
-                                        background: #1F959C;
+                                        background: $blue-color;
                                         padding: 0.65em 20px;
                                         margin: 10px;
                                         width: 65%;
                                         cursor: pointer;
 
-                                        @include tablet-portrait-only{
+                                        @include tablet-portrait-only {
                                             padding: 0.65em 2px;
                                             font-size: 1.1rem;
                                         }
 
-                                        @include mobile-only{
+                                        @include mobile-only {
                                             padding: 0.65em 1px;
                                             font-size: 1rem;
                                         }
                                     }
 
-                                    #start-game-button:hover{
-                                       background:#41C2CA;
+                                    #start-game-button:hover {
+                                       background:$blue-color;
                                     }
                                 }
                             }
 
-                            #game-end-info{
+                            #game-end-info {
                                 text-align: center;
                                 font-size: 16px;
 
-                                @include mobile-only{
+                                @include mobile-only {
                                     font-size: 13px;
                                 }
 
-                                .game-end-headline{
+                                .game-end-headline {
                                     font-size: 24px;
                                     margin-bottom: 10px;
 
-                                    @include mobile-only{
+                                    @include mobile-only {
                                         font-size: 18px;
                                     }
                                 }
@@ -985,9 +996,9 @@ body{
                     }
                 }
             }
-            #info-container{
+            #info-container {
                 width: 100%;
-                background: #252525;
+                background:  $title-color;
                 color: white;
                 @include br;
                 text-align: center;
@@ -995,73 +1006,73 @@ body{
                 height: 50%;
                 margin-top: 10px;
 
-                @include tablet-portrait-only{
+                @include tablet-portrait-only {
                     padding-top: 5px;
                     height: auto;
                 }
 
-                @include mobile-only{
+                @include mobile-only {
                     width: 100%;
                     padding: 1px;
-                    margin: 0px auto;
+                    margin:0 auto;
                     height: 72%;
                 }
 
-                #inner-info{
+                #inner-info {
                     width: 90%;
                     margin: 0 5%;
 
-                    #lobby-how-to-play{
+                    #lobby-how-to-play {
                         font-size: 18px;
                         margin-top: 10px;
 
-                        @include tablet-portrait-only{
+                        @include tablet-portrait-only {
                             font-size: 14px;
                         }
                     }
 
-                    ol{
+                    ol {
                         margin-top: 10px;
                         font-family: $main-font;
                         text-align: left;
                         font-size: 17px;
 
-                        li{
+                        li {
                             list-style-type: decimal;
                             margin-bottom: 5px;
                         }
 
-                        @include mobile-only{
+                        @include mobile-only {
                             font-size: 13px;
-                            padding: 0px 10px 10px 10px;
+                            padding:0 10px 10px 10px;
                         }
                     }
                 }
             }
 
-            #game-end-container{
+            #game-end-container {
                 width: 100%;
-                background: #252525;
+                background:  $title-color;
                 @include br;
                 text-align: center;
                 overflow: hidden;
                 height: 50%;
                 margin-top: 10px;
 
-                @include mobile-only{
+                @include mobile-only {
                     height: 65%;
                 }
 
-                #charity-widget-container{
+                #charity-widget-container {
                     width: 40%;
                     float: left;
 
-                    @include mobile-only{
+                    @include mobile-only {
                         display: none;
                     }
                 }
 
-                #inner-info-exit{
+                #inner-info-exit {
                     width: 60%;
                     position: relative;
                     overflow: hidden;
@@ -1069,33 +1080,33 @@ body{
                     color: white;
                     float: left;
 
-                    @include mobile-only{
+                    @include mobile-only {
                         float: none;
                         width: 80%;
                     }
 
-                    .game-end-answer-text{
+                    .game-end-answer-text {
                         color: white;
 
-                        @include mobile-only{
+                        @include mobile-only {
                             padding: 6px;
                             font-size: 22px;
                         }
                     }
 
-                    @include mobile-only{
+                    @include mobile-only {
                         width: 100%;
                     }
 
-                    #inner-text-container{
+                    #inner-text-container {
                         overflow: hidden;
                         height: 100%;
 
-                        @include mobile-only{
+                        @include mobile-only {
                             height: auto;
                         }
 
-                        #join-new-game{
+                        #join-new-game {
                             float: left;
                             @include button-smaller;
                             width: 40%;
@@ -1105,12 +1116,12 @@ body{
                             line-height: 155%;
                             padding-top: 5%;
 
-                             &:hover{
+                             &:hover {
                                 @include button-hover-smaller;
                             }
                         }
 
-                        #exit-match{
+                        #exit-match {
                             float: left;
                             @include button-smaller;
                             width: 40%;
@@ -1120,7 +1131,7 @@ body{
                             line-height: 155%;
                             padding-top: 5%;
 
-                             &:hover{
+                             &:hover {
                                 @include button-hover-smaller;
                             }
                         }
@@ -1129,10 +1140,10 @@ body{
                 }
             }
 
-            #czar-blank-container{
+            #czar-blank-container {
                 color: white;
                 width: 100%;
-                background: #252525;
+                background:  $title-color;
                 @include br;
                 text-align: center;
                 overflow: hidden;
@@ -1141,13 +1152,13 @@ body{
                 margin-top: 10px;
                 font-size: 30px;
 
-                @include mobile-only{
+                @include mobile-only {
                     width: 100%;
                     font-size: 16px;
-                    margin: 0px auto;
+                    margin:0 auto;
                 }
 
-                #czar-blank-inner{
+                #czar-blank-inner {
                     position: absolute;
                     left: 10%;
                     right: 10%;
@@ -1155,14 +1166,14 @@ body{
                     height: 50px;
                     margin-top: 5%;
 
-                    #smaller-text{
+                    #smaller-text {
                         font-size: 18px;
                     }
                 }
 
-                #charity-fact-container{
+                #charity-fact-container {
                     @include br;
-                    background-color: #fff;
+                    background-color:  $white-color;
                     color: black;
 
                     position: absolute;
@@ -1172,49 +1183,49 @@ body{
                     padding: 3px;
                     text-align: left;
 
-                    @include mobile-only{
+                    @include mobile-only {
                         height: 40%;
                         display: none;
                     }
 
-                    #charity-fact-tagline{
+                    #charity-fact-tagline {
                         font-family: 'Lobster', cursive;
                         font-size: 22px;
                         margin-left: 2%;
                         margin-bottom: 3px;
-                        color: #000;
+                        color:  $black-color;
 
-                        @include mobile-only{
+                        @include mobile-only {
                             font-size: 16px;
                         }
                     }
 
-                    #charity-fact{
+                    #charity-fact {
                         font-size: 14px;
                         font-style: italic;
                         text-align: center;
                         width: 90%;
                         margin: 0 5% 3px 5%;
 
-                        @include mobile-only{
+                        @include mobile-only {
                             font-size: 12px;
                         }
                     }
 
-                    #charity-logo-container{
+                    #charity-logo-container {
 
-                        @include mobile-only{
+                        @include mobile-only {
                             position: absolute;
                             top: 1px;
                             right: 0;
                         }
 
-                        img{
+                        img {
                             float: right;
                             margin-right: 2%;
                             margin-bottom: 3px;
 
-                            @include mobile-only{
+                            @include mobile-only {
                                 width: 53%;
                             }
                         }
@@ -1222,25 +1233,25 @@ body{
                 }
             }
 
-            #cards-container{
+            #cards-container {
                 width: 100%;
-                background: #252525;
+                background:  $title-color;
                 margin-top: 11px;
                 @include br;
 
-                @include mobile-only{
+                @include mobile-only {
                     background: transparent;
                     margin-top: 2px;
                 }
 
-                #cards {
+                #cards  {
                     width: 100%;
                     height: 100%;
                     font-size: 18px;
                     padding-left: 5px;
 
-                    @include mobile-only{
-                        background: #252525;
+                    @include mobile-only {
+                        background:  $title-color;
                         -webkit-border-radius: 8px;
                         -moz-border-radius: 8px;
                         border-radius: 8px;
@@ -1252,12 +1263,12 @@ body{
     }
 }
 
-#notifications{
+#notifications {
 
-    @include tablet-portrait-only{
+    @include tablet-portrait-only {
         font-size: 18px;
     }
-    @include mobile-only{
+    @include mobile-only {
         font-size: 15px;
     }
 }
@@ -1265,64 +1276,64 @@ body{
 
 
 //Attempt to Modify our Charity Banner
-.crDonateWidget {
-    -webkit-box-shadow: 0px 0px 0px 0px transparent !important;
-    -moz-box-shadow: 0px 0px 0px 0px transparent !important;
-    box-shadow: 0px 0px 0px 0px transparent !important;
-    -webkit-border-radius: 8px !important;
-    -moz-border-radius: 8px !important;
-    border-radius: 8px !important;
+.crDonateWidget  {
+    -webkit-box-shadow:0000 transparent ;
+    -moz-box-shadow:0000 transparent ;
+    box-shadow:0000 transparent ;
+    -webkit-border-radius: 8px ;
+    -moz-border-radius: 8px ;
+    border-radius: 8px ;
 }
 
-.crDonateWidgetOuter {
+.crDonateWidgetOuter  {
     text-align: center;
-    background-color: transparent !important;
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0) !important;
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.0) !important;
-    border: 0px solid #e6e6e6 !important;
-    margin: 0px 0px !important;
+    background-color: transparent ;
+    -webkit-box-shadow:0000 rgba(0,0,0,0.0) ;
+    box-shadow:0000 rgba(0,0,0,0.0) ;
+    border:0 solid #e6e6e6 ;
+    margin:00 ;
 }
 
-.crDonated{
-    margin-top: 2px !important;
+.crDonated {
+    margin-top: 2px ;
 }
 
-.crImageAndTitle{
+.crImageAndTitle {
     display: none;
 }
 
-.crImageAndTitleOuter{
+.crImageAndTitleOuter {
     display: none;
 }
 
-.startFundraiser{
+.startFundraiser {
     display: none;
 }
 
-#crDonateWidget_cfhio_cards4humanity{
-    width: 90% !important;
-    margin-top: 67px !important;
+#crDonateWidget_cfhio_cards4humanity {
+    width: 90% ;
+    margin-top: 67px ;
 
-    .crDonateTriangle{
-        right: 6px !important;
+    .crDonateTriangle {
+        right: 6px ;
     }
-    h4{
-        margin-bottom: 8px !important;
+    h4 {
+        margin-bottom: 8px ;
     }
 }
 
 
 
-.gradientButton{
-    width: 80% !important;
-    margin-top: 8px !important;
-    background: rgb(244,120,31) !important;
-    -webkit-border-radius: 8px !important;
-    -moz-border-radius: 8px !important;
-    border-radius: 8px !important;
-    text-transform: none !important;
-    .donateNow{
-        border-top: 0px solid black !important;
+.gradientButton {
+    width: 80% ;
+    margin-top: 8px ;
+    background:  $blue-color ;
+    -webkit-border-radius: 8px ;
+    -moz-border-radius: 8px ;
+    border-radius: 8px ;
+    text-transform: none ;
+    .donateNow {
+        border-top:0 solid black ;
     }
 }
 
