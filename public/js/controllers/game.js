@@ -125,7 +125,11 @@ angular.module('mean.system')
     };
 
     $scope.startGame = function() {
-      game.startGame();
+      if (game.players.length < 3){
+        swal("Game starts with atleast 3 players")
+      }else{
+        game.startGame();
+      }
     };
 
     $scope.abandonGame = function() {
@@ -166,8 +170,8 @@ angular.module('mean.system')
           if(!$scope.modalShown){
             setTimeout(function(){
               var link = document.URL;
-              var txt = 'Invite friends by searching there names: ';
-              $('#lobby-how-to-play').text(txt);G
+              var txt = 'Invite friends by searching their names: ';
+              $('#lobby-how-to-play').text(txt);
               $('#oh-el').css({'text-align': 'center', 'font-size':'22px', 'background': 'white', 'color': 'black'}).text(link);
             }, 200);
             $scope.modalShown = true;

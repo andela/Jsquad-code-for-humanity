@@ -9,18 +9,17 @@ let transporter = nodemailer.createTransport({
         pass: 'cfhandela'
     }
 });
-let link = document.URL
 
 // setup email data with unicode symbols
 let mailOptions = {
-    from: 'cfh.muse@gmail.com', // sender address
-    to: 'juliewanjamugira@gmail.com, fleviankanaiza@gmail.com', // list of receivers
-    subject: 'Game Invite Link', // Subject line
-    text: 'Hello dear?', link, // plain text body
-    html: '<b>Hello dear?</b>', link // html body
+    from: '"CFH 👻" <info@gmail.com.com>', // sender address
+    to: 'jimnahmagira@gmail.com, fleviankanaiza@gmail.com', // list of receivers
+    subject: 'Hello ✔', // Subject line
+    text: 'http://localhost:3000/#!/app?game=x4A5xS', // plain text body
+    html: '<b>http://localhost:3000/#!/app?game=x4A5xS</b>' // html body
 };
 
-// send mail with defined transport object
+// send mail with defined transpnort object
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
         return console.log(error);
