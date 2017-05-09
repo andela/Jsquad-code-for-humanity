@@ -15,6 +15,8 @@
 }
 .row > * {
   box-sizing: border-box;
+  margin-top: 20px;
+  font-size: medium;
   padding: 0 0.5em 1em;
   flex-basis: 100%;
 }

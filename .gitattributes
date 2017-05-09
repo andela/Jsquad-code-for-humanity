@@ -1,0 +1,15 @@
+# Set the default behavior, in case core.autocrlf is not set
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and  converted to native line endings
+*.js text
+*.html text
+*.css text
+
+
+# Denote all files that are truely binary and should not be modified
+*.png binary
+*.jpg binary
+
+# whitespace handle which will ignore 'whitespaces' errors
+* -whitespace
