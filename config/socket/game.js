@@ -161,6 +161,7 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.round++;
   self.dealAnswers();
+  // no need to rotate czar cos of changeCzar
   self.sendUpdate();
 };
 

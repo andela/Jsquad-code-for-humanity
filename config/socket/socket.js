@@ -74,7 +74,7 @@ module.exports = function (io) {
     });
 
     // socket event listener for when Czar clicks card
-    socket.on('selectBlackCard', () => {
+    socket.on('pickBlackCard', () => {
       allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
     });
   });

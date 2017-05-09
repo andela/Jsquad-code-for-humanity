@@ -136,7 +136,7 @@ const GameController = function (socket, $timeout) {
     if (newState || game.curQuestion !== data.curQuestion) {
       game.state = data.state;
     }
-
+    // service to listen to the czar draw card state
     if (data.state === 'pick black card') {
       game.czar = data.czar;
       if (game.czar === game.playerIndex) {
@@ -213,7 +213,7 @@ const GameController = function (socket, $timeout) {
   decrementTime();
   // Starts the next round after the Czar clicks
   game.startNextRound = () => {
-    socket.emit('selectBlackCard');
+    socket.emit('pickBlackCard');
   };
 
   return game;

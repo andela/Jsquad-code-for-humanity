@@ -1,6 +1,6 @@
 angular.module('mean.system')
-  .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService',
-    function ($scope, game, $timeout, $location, MakeAWishFactsService) {
+  .controller('GameController', ['$scope', 'game', '$timeout', '$location', '$dialog', '$http', 'MakeAWishFactsService',
+    function ($scope, game, $timeout, $location, $dialog, $http, MakeAWishFactsService) {
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
       $scope.showTable = false;
@@ -131,7 +131,9 @@ angular.module('mean.system')
         $timeout(() => {
           $scope.startNextRound();
           card.removeClass('animated flipOutX');
-          $('#closeModal').click();
+          card.hide();
+          $('#card-modal').hide();
+          // $('#closeModal').click();
         }, 2000);
       };
 
