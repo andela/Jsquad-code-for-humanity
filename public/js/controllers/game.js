@@ -131,8 +131,6 @@ angular.module('mean.system')
         $timeout(() => {
           $scope.startNextRound();
           card.removeClass('animated flipOutX');
-          // card.hide();
-          // $('#card-modal').hide();
           $('#closeModal').click();
         }, 2000);
       };
