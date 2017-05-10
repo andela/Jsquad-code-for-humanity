@@ -131,9 +131,9 @@ angular.module('mean.system')
         $timeout(() => {
           $scope.startNextRound();
           card.removeClass('animated flipOutX');
-          card.hide();
-          $('#card-modal').hide();
-          // $('#closeModal').click();
+          // card.hide();
+          // $('#card-modal').hide();
+          $('#closeModal').click();
         }, 2000);
       };
 
@@ -167,7 +167,7 @@ angular.module('mean.system')
         if ($scope.isCzar() && game.state === 'pick black card'
           && game.state !== 'game dissolved'
           && game.state !== 'awaiting players' && game.table.length === 0) {
-          displayMessage('', '#card-modal'); // div of blackcard
+          $('#card-modal').modal('show'); // show the modal when czar is to pick card
         }
 
         // when czar is drawing a card
@@ -200,7 +200,7 @@ angular.module('mean.system')
                 const link = document.URL;
                 const txt = 'Give the following link to your friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
-                $('#oh-el').css({ 'text-align': 'center', 'font-size': '22px', 'background': 'white', 'color': 'black' }).text(link);
+                $('#oh-el').css({ 'text-align': 'center', 'font-size': '22px', background: 'white', color: 'black' }).text(link);
               }, 200);
               $scope.modalShown = true;
             }
