@@ -336,15 +336,15 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     &.black  {
-        background:  $title-color;
-        border-color: white;
-        color: white;
+        background:  $black-color;
+        border-color: $background-color;;
+        color: $background-color;;
     }
 
     &.longBlack  {
-        background:  $title-color;
-        border-color: white;
-        color: white;
+        background:  $black-color;
+        border-color: $background-color;
+        color: $background-color;
         height: 100%;
         width: 35.5em;
         padding-left: 2%;
@@ -368,7 +368,7 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
         text-decoration: none;
 
         height: 1em;
-        border-bottom: 0.125em solid white;
+        border-bottom: 0.125em solid $background-color;;
         margin-bottom: -0.125em;
 
         .small  {
@@ -818,14 +818,14 @@ body {
                         #inner-timer-container {
                             text-align: center;
                             @include soft-button;
-                            background:  $white-color;
+                            background:  $black-color;
                             text-shadow: none;
                             cursor: default;
                             border: none;
                             min-width: 85px;
                             min-height: 85px;
                             height: 100%;
-                            color:  $black-color;
+                            color:  $pink-color;
 
                             #timer-status-round, #timer-status-czar-choosing {
                                 position: absolute;
@@ -998,8 +998,8 @@ body {
             }
             #info-container {
                 width: 100%;
-                background:  $title-color;
-                color: white;
+                background:  $black-color;
+                color: $background-color;
                 @include br;
                 text-align: center;
                 padding: 15px;
@@ -1025,6 +1025,7 @@ body {
                     #lobby-how-to-play {
                         font-size: 18px;
                         margin-top: 10px;
+                        color: #d9d9d9;
 
                         @include tablet-portrait-only {
                             font-size: 14px;
@@ -1141,9 +1142,9 @@ body {
             }
 
             #czar-blank-container {
-                color: white;
+                color: $background-color;
                 width: 100%;
-                background:  $title-color;
+                background:  $black-color;
                 @include br;
                 text-align: center;
                 overflow: hidden;
