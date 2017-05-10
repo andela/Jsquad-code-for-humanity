@@ -62,7 +62,6 @@ angular.module('mean.directives', [])
           swal("Game has maximum players!");
         }
       }
-      link() { }
     };
   })
   .directive('timer', function () {

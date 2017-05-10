@@ -1,30 +1,6 @@
 angular.module('mean.system')
-<<<<<<< HEAD
-.controller('GameController', ['$scope', '$http', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, $http, game, $timeout, $location, MakeAWishFactsService, $dialog) {
-    $scope.hasPickedCards = false;
-    $scope.winningCardPicked = false;
-    $scope.showTable = false;
-    $scope.modalShown = false;
-    $scope.game = game;
-    $scope.pickedCards = [];
-    var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
-    $scope.makeAWishFact = makeAWishFacts.pop();
-
-    $scope.pickCard = function(card) {
-      if (!$scope.hasPickedCards) {
-        if ($scope.pickedCards.indexOf(card.id) < 0) {
-          $scope.pickedCards.push(card.id);
-          if (game.curQuestion.numAnswers === 1) {
-            $scope.sendPickedCards();
-            $scope.hasPickedCards = true;
-          } else if (game.curQuestion.numAnswers === 2 &&
-            $scope.pickedCards.length === 2) {
-            //delay and send
-            $scope.hasPickedCards = true;
-            $timeout($scope.sendPickedCards, 300);
-=======
-  .controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService',
-    function ($scope, game, $timeout, $location, MakeAWishFactsService) {
+  .controller('GameController', ['$scope', '$http', 'game', '$timeout', '$location', 'MakeAWishFactsService',
+    function ($scope, $http, game, $timeout, $location, MakeAWishFactsService) {
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
       $scope.showTable = false;
@@ -49,7 +25,6 @@ angular.module('mean.system')
             }
           } else {
             $scope.pickedCards.pop();
->>>>>>> develop
           }
         }
       };
@@ -60,22 +35,14 @@ angular.module('mean.system')
         }
         return {};
       };
+      $http.get('api/search/users').success((data) => {
+        $scope.invitePlayers = data;
+      });
 
-<<<<<<< HEAD
-    $http.get('api/search/users').success((data) => {
-      $scope.invitePlayers = data;
-    })
-
-    $scope.sendPickedCards = function() {
-      game.pickCards($scope.pickedCards);
-      $scope.showTable = true;
-    };
-=======
       $scope.sendPickedCards = function () {
         game.pickCards($scope.pickedCards);
         $scope.showTable = true;
       };
->>>>>>> develop
 
       $scope.cardIsFirstSelected = function (card) {
         if (game.curQuestion.numAnswers > 1) {
@@ -152,12 +119,7 @@ angular.module('mean.system')
       };
 
       $scope.startGame = function () {
-        if (game.players.length < 3){
-          //pop up to show game players are less than minimum players
-          swal("Game starts with atleast 3 players")
-        }else{
         game.startGame();
-        }
       };
 
       $scope.abandonGame = function () {
@@ -204,7 +166,6 @@ angular.module('mean.system')
               }, 200);
               $scope.modalShown = true;
             }
-
           }
         }
       });
@@ -218,3 +179,4 @@ angular.module('mean.system')
         game.joinGame();
       }
     }]);
+

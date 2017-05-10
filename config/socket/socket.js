@@ -56,7 +56,7 @@ module.exports = function(io) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function(game,index) {
             if (game.gameID === socket.gameID) {
-               return gamesNeedingPlayers.splice(index,1);
+              return gamesNeedingPlayers.splice(index,1);
             }
           });
           thisGame.prepareGame();
@@ -113,20 +113,13 @@ module.exports = function(io) {
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
       var game = allGames[requestedGameId];
-      if (game.state === 'waiting for players to pick') {
-        game.fullNotification('Game has maximum players', player.socket.id);
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
       // Also checking the number of players, so node doesn't crash when
       // no one is in this custom room.
-      }
-      if (game.state === 'awaiting players' && game.players.length < 3){
-        game.lessNotification('less players', player.socket.id);
-      }
       if (game.state === 'awaiting players' && (!game.players.length ||
         game.players[0].socket.id !== socket.id)) {
-          
         // Put player into the requested game
         console.log('Allowing player to join',requestedGameId);
         allPlayers[socket.id] = true;
