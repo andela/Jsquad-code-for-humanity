@@ -119,7 +119,11 @@ angular.module('mean.system')
       };
 
       $scope.startGame = function () {
-        game.startGame();
+        if (game.players.length < 3) {
+          swal('Game can not start with less than 3 players');
+        } else {
+          game.startGame();
+        }
       };
 
       $scope.abandonGame = function () {
