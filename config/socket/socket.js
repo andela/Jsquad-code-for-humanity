@@ -16,15 +16,15 @@ module.exports = function (io) {
   let gameID = 0;
 
   io.sockets.on('connection', function (socket) {
-    console.log(`${socket.id} Connected`);
+    // console.log(`${socket.id} Connected`);
     socket.emit('id', { id: socket.id });
 
     socket.on('pickCards', function (data) {
-      console.log(socket.id, 'picked', data);
+      // console.log(socket.id, 'picked', data);
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
       } else {
-        console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
+        // console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -32,7 +32,7 @@ module.exports = function (io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
       } else {
-        console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
+        // console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -50,7 +50,7 @@ module.exports = function (io) {
     socket.on('startGame', function () {
       if (allGames[socket.gameID]) {
         const thisGame = allGames[socket.gameID];
-        console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
+        // console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function (game, index) {
@@ -124,7 +124,7 @@ module.exports = function (io) {
         _id: data.userID
       }).exec(function (err, user) {
         if (err) {
-          console.log('err', err);
+          // console.log('err', err);
           return err; // Hopefully this never happens.
         }
         if (!user) {
