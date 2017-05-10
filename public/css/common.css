@@ -26,13 +26,13 @@
     left: 7px;
     font-size: 18px; }
   .card.black {
-    background: #252525;
-    border-color: white;
-    color: white; }
+    background: #000;
+    border-color: #d9d9d9;
+    color: #d9d9d9; }
   .card.longBlack {
-    background: #252525;
-    border-color: white;
-    color: white;
+    background: #000;
+    border-color: #d9d9d9;
+    color: #d9d9d9;
     height: 100%;
     width: 35.5em;
     padding-left: 2%;
@@ -49,7 +49,7 @@
     width: 25%;
     text-decoration: none;
     height: 1em;
-    border-bottom: 0.125em solid white;
+    border-bottom: 0.125em solid #d9d9d9;
     margin-bottom: -0.125em; }
     .card u .small {
       width: 25%; }
@@ -416,14 +416,14 @@ body {
               text-indent: 0;
               text-shadow: 1px 1px0 #ffffff;
               cursor: pointer;
-              background: #fff;
+              background: #000;
               text-shadow: none;
               cursor: default;
               border: none;
               min-width: 85px;
               min-height: 85px;
               height: 100%;
-              color: #000; }
+              color: #be2ba5; }
               #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container #inner-timer-container #timer-status-round, #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container #inner-timer-container #timer-status-czar-choosing {
                 position: absolute;
                 left: 0;
@@ -544,8 +544,8 @@ body {
                       font-size: 18px; } }
       #main-container #app-container #gameplay-container #info-container {
         width: 100%;
-        background: #252525;
-        color: white;
+        background: #000;
+        color: #d9d9d9;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
@@ -568,7 +568,8 @@ body {
           margin: 0 5%; }
           #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
             font-size: 18px;
-            margin-top: 10px; }
+            margin-top: 10px;
+            color: #d9d9d9; }
             @media only screen and (min-width: 521px) and (max-width: 768px) {
               #main-container #app-container #gameplay-container #info-container #inner-info #lobby-how-to-play {
                 font-size: 14px; } }
@@ -714,9 +715,9 @@ body {
                 background-color: #f0f0f0;
                 color: #4e4e4e; }
       #main-container #app-container #gameplay-container #czar-blank-container {
-        color: white;
+        color: #d9d9d9;
         width: 100%;
-        background: #252525;
+        background: #000;
         -webkit-border-radius: 8px;
         -moz-border-radius: 8px;
         border-radius: 8px;
