@@ -56,11 +56,11 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {
-        scope.swalert= function (){
-          //game full popup function
-          swal("Game has maximum players!");
-        }
+      link: function(scope, elem) {
+        scope.swalert= function () {
+          // game full popup function
+          swal('Game has maximum players!');
+        };
       }
     };
   })

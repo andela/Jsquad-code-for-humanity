@@ -85,10 +85,10 @@ Game.prototype.sendNotification = function (msg) {
   this.io.sockets.in(this.gameID).emit('notification', { notification: msg });
 };
 
-Game.prototype.fullNotification = function(msg, playerId) {
+Game.prototype.fullNotification = function (msg, playerId) {
   if (this.io.sockets.connected[playerId]) {
-   this.io.sockets.connected[playerId].emit('notification', { notification: msg });
- }
+    this.io.sockets.connected[playerId].emit('notification', { notification: msg });
+  }
 };
 
 

@@ -228,5 +228,4 @@ module.exports = function(io) {
     }
     socket.leave(socket.gameID);
   };
-
 };

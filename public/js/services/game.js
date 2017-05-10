@@ -33,10 +33,9 @@ const GameController = function (socket, $timeout) {
       game.notification = notificationQueue.shift(); // Show a notification and check again in a bit
       if (game.notification === 'Game has maximum players') {
         timeout = false;
-      }
-      else {
+      } else {
         timeout = $timeout(setNotification, 1300);
-      } 
+      }
     }
   };
 
