@@ -13,7 +13,6 @@ const mongoose = require('mongoose'),
 const port = process.env.PORT || 3000;
 
 module.exports = function (app, passport, auth) {
-  
   //User Routes
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
@@ -79,7 +78,6 @@ module.exports = function (app, passport, auth) {
 
   //Finish with setting up the userId param
   app.param('userId', users.user);
-  
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
   // Finish with setting up the answerId param
@@ -95,7 +93,6 @@ module.exports = function (app, passport, auth) {
   //Home route
   app.get('/play', index.play);
   app.get('/', index.render);
-
   app.post('/api/auth/login', users.loginWithEmail);
   app.post('/api/auth/signup', users.signupWithEmail);
 };
