@@ -28,11 +28,12 @@
             <div id="landing-logo">
               <img src='../img/muselogo.png'>
             </div>
-            <div class="col-md-9 wpb-menu-container">
+            <div class="col-md-9 wpb-menu-container" id="menuItems">
               <ul class="wpb-main-menu">
                 <!--<li><a onClick="scroll(0,0)">Home</a></li>-->
                 <li><a onClick="scroll(0,742);">How to Play</a></li>
                 <li><a onClick="scroll(0,1411);">Charity</a></li>
+                <li><button onclick="welcome.start()" class="btn btn-success"><i class="fa fa-car"></i> Take Tour</button></li>
                 <!--<li><a onClick="scroll(0,2021);">About Us</a></li>-->
                 <span ng-show="showOptions">
                   <!--<li><a href="#!/signup">Sign Up</a></li>-->
@@ -61,7 +62,7 @@
         </div>
 
         <!-- Teaser Text Start -->
-        <div class="row row-top">
+        <div class="row row-top" id="Avators">
           <div class="col-8 col-top">
             <div class="wpb-slogan">
               <h2>A Game for Horrible People <span id="warning-word">Desperately</span> Trying to do Good</h2>
