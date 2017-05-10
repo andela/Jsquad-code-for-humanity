@@ -2,6 +2,7 @@ const Game = require('./game');
 const Player = require('./player');
 require('console-stamp')(console, 'm/dd HH:MM:ss');
 const mongoose = require('mongoose');
+
 const User = mongoose.model('User');
 
 const avatars = require(`${__dirname}/../../app/controllers/avatars.js`).all();
@@ -9,7 +10,6 @@ const avatars = require(`${__dirname}/../../app/controllers/avatars.js`).all();
 const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
 module.exports = function (io) {
-  let game;
   const allGames = {};
   const allPlayers = {};
   const gamesNeedingPlayers = [];
@@ -78,6 +78,42 @@ module.exports = function (io) {
       allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
     });
   });
+  const getGame = function (player, socket, requestedGameId, createPrivate) {
+    requestedGameId = requestedGameId || '';
+    createPrivate = createPrivate || false;
+    // console.log(socket.id, 'is requesting room', requestedGameId);
+    if (requestedGameId.length && allGames[requestedGameId]) {
+      // console.log('Room', requestedGameId, 'is valid');
+      const game = allGames[requestedGameId];
+      // Ensure that the same socket doesn't try to join the same game
+      // This can happen because we rewrite the browser's URL to reflect
+      // the new game ID, causing the view to reload.
+      // Also checking the number of players, so node doesn't crash when
+      // no one is in this custom room.
+      if (game.state === 'awaiting players' && (!game.players.length ||
+        game.players[0].socket.id !== socket.id)) {
+        // Put player into the requested game
+        allPlayers[socket.id] = true;
+        game.players.push(player);
+        socket.join(game.gameID);
+        socket.gameID = game.gameID;
+        game.assignPlayerColors();
+        game.assignGuestNames();
+        game.sendUpdate();
+        game.sendNotification(`${player.username} has joined the game!`);
+        if (game.players.length >= game.playerMaxLimit) {
+          gamesNeedingPlayers.shift();
+          game.prepareGame();
+        }
+      } else {
+        // TODO: Send an error message back to this user saying the game has already started
+      }
+    } else if (createPrivate) {
+      createGameWithFriends(player, socket);
+    } else {
+      fireGame(player, socket);
+    }
+  };
 
   const joinGame = function (socket, data) {
     const player = new Player(socket);
@@ -110,47 +146,6 @@ module.exports = function (io) {
     }
   };
 
-  const getGame = function (player, socket, requestedGameId, createPrivate) {
-    requestedGameId = requestedGameId || '';
-    createPrivate = createPrivate || false;
-    console.log(socket.id, 'is requesting room', requestedGameId);
-    if (requestedGameId.length && allGames[requestedGameId]) {
-      console.log('Room', requestedGameId, 'is valid');
-      const game = allGames[requestedGameId];
-      // Ensure that the same socket doesn't try to join the same game
-      // This can happen because we rewrite the browser's URL to reflect
-      // the new game ID, causing the view to reload.
-      // Also checking the number of players, so node doesn't crash when
-      // no one is in this custom room.
-      if (game.state === 'awaiting players' && (!game.players.length ||
-        game.players[0].socket.id !== socket.id)) {
-        // Put player into the requested game
-        console.log('Allowing player to join', requestedGameId);
-        allPlayers[socket.id] = true;
-        game.players.push(player);
-        socket.join(game.gameID);
-        socket.gameID = game.gameID;
-        game.assignPlayerColors();
-        game.assignGuestNames();
-        game.sendUpdate();
-        game.sendNotification(`${player.username} has joined the game!`);
-        if (game.players.length >= game.playerMaxLimit) {
-          gamesNeedingPlayers.shift();
-          game.prepareGame();
-        }
-      } else {
-        // TODO: Send an error message back to this user saying the game has already started
-      }
-    } else {
-      // Put players into the general queue
-      console.log('Redirecting player', socket.id, 'to general queue');
-      if (createPrivate) {
-        createGameWithFriends(player, socket);
-      } else {
-        fireGame(player, socket);
-      }
-    }
-  };
 
   const fireGame = function (player, socket) {
     let game;
@@ -164,7 +159,7 @@ module.exports = function (io) {
       gamesNeedingPlayers.push(game);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
-      console.log(socket.id, 'has joined newly created game', game.gameID);
+      // console.log(socket.id, 'has joined newly created game', game.gameID);
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
@@ -172,7 +167,7 @@ module.exports = function (io) {
       game = gamesNeedingPlayers[0];
       allPlayers[socket.id] = true;
       game.players.push(player);
-      console.log(socket.id, 'has joined game', game.gameID);
+      // console.log(socket.id, 'has joined game', game.gameID);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       game.assignPlayerColors();
@@ -199,7 +194,7 @@ module.exports = function (io) {
         isUniqueRoom = true;
       }
     }
-    console.log(socket.id, 'has created unique game', uniqueRoom);
+    // console.log(socket.id, 'has created unique game', uniqueRoom);
     const game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
@@ -212,10 +207,10 @@ module.exports = function (io) {
   };
 
   const exitGame = function (socket) {
-    console.log(socket.id, 'has disconnected');
+    // console.log(socket.id, 'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
       const game = allGames[socket.gameID];
-      console.log(socket.id, 'has left game', game.gameID);
+      // console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
         game.players.length - 1 >= game.playerMinLimit) {
