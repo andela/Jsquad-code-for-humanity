@@ -19,9 +19,12 @@
     "postinstall": "gulp bower"
   },
   "dependencies": {
+    "angular-bootstrap-tour": "^0.3.3-alpha.1",
+    "angular-ui-tour": "^0.8.1",
     "async": "~2.3.0",
     "bcryptjs": "~2.4.3",
     "body-parser": "^1.17.1",
+    "bootstrap-tour": "^0.11.0",
     "bower": "~1.8.0",
     "browser-sync": "^2.18.8",
     "compression": "^1.6.2",
