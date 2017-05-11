@@ -1,4 +1,4 @@
-const async = require('async');
+const async = require('__dirname, async');
 const _ = require('underscore');
 
 const questions = require(`${__dirname}/../../app/controllers/questions.js`);
