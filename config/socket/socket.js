@@ -16,11 +16,9 @@ module.exports = function (io) {
   let gameID = 0;
 
   io.sockets.on('connection', function (socket) {
-    // console.log(`${socket.id} Connected`);
     socket.emit('id', { id: socket.id });
 
     socket.on('pickCards', function (data) {
-      // console.log(socket.id, 'picked', data);
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
       } else {
