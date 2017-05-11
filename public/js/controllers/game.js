@@ -120,6 +120,7 @@ angular.module('mean.system')
 
       $scope.startGame = function () {
         if (game.players.length < 3) {
+          let swal;
           swal('Game can not start with less than 3 players');
         } else {
           game.startGame();

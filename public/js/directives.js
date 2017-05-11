@@ -56,7 +56,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function (scope) {
+      link(scope) {
         scope.swalert = function () {
           let swal;
           // game full popup function
