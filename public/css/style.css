@@ -172,6 +172,15 @@
    background: #d9d9d9;
    padding: 0px 5px 5px 13px;
 }
+#landing-logo3 {
+  background: #000;
+  margin: 5px 0 5px 0px;
+  font-size: 35px;
+  font-family: 'Lobster', cursive;
+  border-radius: 20px;
+  padding: 5px 5px 5px 13px;
+}
+
 #landing-logo img{
   width: 9%;
   margin-left: 50px;
@@ -346,7 +355,7 @@
 
  #slogan {
    text-align: center;
-   color: #000;
+   color: #d9d9d9;
    font-weight: 400;
  }
  #slogan2 {
@@ -401,7 +410,7 @@
     font-size: large;
     font-weight: 300;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: -13px;
+    margin-bottom: -35px;
  }
 
  #sign-up-btn-landing {
@@ -506,6 +515,9 @@
 
  .sign-body {
    text-align: center;
+   background-color: black;
+   padding: 10px
+
  }
 
  #sign-up {
