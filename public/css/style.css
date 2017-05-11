@@ -172,6 +172,15 @@
    background: #d9d9d9;
    padding: 5px 5px 5px 13px;
 }
+#landing-logo3 {
+  background: #000;
+  margin: 5px 0 5px 0px;
+  font-size: 35px;
+  font-family: 'Lobster', cursive;
+  border-radius: 20px;
+  padding: 5px 5px 5px 13px;
+}
+
 #landing-logo img{
   width: 9%;
   margin-left: 50px;
@@ -346,7 +355,7 @@
 
  #slogan {
    text-align: center;
-   color: #000;
+   color: #d9d9d9;
    font-weight: 400;
  }
  #slogan2 {
@@ -401,24 +410,25 @@
     font-size: large;
     font-weight: 300;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: -13px;
+    margin-bottom: -35px;
  }
 
  #sign-up-btn-landing {
    display: inline-block;
+   overflow:hidden;
    border-radius: 8px;
    -moz-border-radius: 5px;
    -webkit-border-radius: 5px;
    font-size: 20px;
-   font-size: 2em;
+   /*font-size: 2em;*/
    font-weight: 400;
    text-align: center;
-   color: #d9d9d9;
-   background: #000;
-   margin-top: 3px;
+   color: #000;
+   background: #28aeff;
+   /*margin-top: 3px;*/
    margin-bottom: 3px;
-   margin-right: 10px;
-   padding: 0.65em 35px;
+   margin-left: 6px;
+   padding: 0.1em 10px;
    cursor: pointer;
  }
 
@@ -505,6 +515,9 @@
 
  .sign-body {
    text-align: center;
+   background-color: black;
+   padding: 10px
+
  }
 
  #sign-up {
@@ -513,8 +526,8 @@
 
 #sign-up-text {
    margin: 0px auto;
-   font-size: 30px;
-   /*font-family: 'Lobster', cursive;*/
+   font-size: 20px;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    border-radius: 8px;
    /*background: #252525;*/
    /*margin-left: 40px;*/
