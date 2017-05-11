@@ -1,5 +1,5 @@
 const Game = require('./game');
-const Player = require('./player');
+const Player = require(__dirname './player');
 require('console-stamp')(console, 'm/dd HH:MM:ss');
 const mongoose = require('mongoose');
 
