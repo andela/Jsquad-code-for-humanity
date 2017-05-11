@@ -76,7 +76,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Finish with setting up the userId param
+  // Finish with setting up the userId param
   app.param('userId', users.user);
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
