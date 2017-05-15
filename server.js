@@ -1,11 +1,11 @@
 const express = require('express');
 const fs = require('fs');
-const { join } = require('path');
+const join = require('path');
 const passport = require('passport');
 const logger = require('mean-logger');
 const io = require('socket.io');
 
-const auth = require('./config/middlewares/authorization');
+const auth = require('./server/middlewares/authorization');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
@@ -22,14 +22,14 @@ const app = express();
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-const config = require('./config/config');
+const config = require('./server/config');
 
 // Bootstrap db connection
 mongoose.connect(config.db);
 
 // Bootstrap models
 
-const modelsPath = join(__dirname, '/app/models');
+const modelsPath = join.join(__dirname, '/server/models');
 
 const walk = function (path) {
   return fs.readdirSync(path).forEach((file) => {
@@ -48,9 +48,9 @@ const walk = function (path) {
 walk(modelsPath);
 
 // express settings
-require('./config/express')(app, passport, mongoose);
-require('./config/passport')(passport);
-require('./config/routes')(app, passport, auth);
+require('./server/express')(app, passport, mongoose);
+require('./server/passport')(passport);
+require('./server/routes')(app, passport, auth);
 
 // Start the app by listening on <port>
 const server = app.listen(config.port);
@@ -58,7 +58,7 @@ const ioObj = io.listen(server, { log: false });
 
 // game logic handled here
 
-require('./config/socket/socket')(ioObj);
+require('./server/socket/socket')(ioObj);
 
 console.log(`Express app started on port ${config.port}`);
 

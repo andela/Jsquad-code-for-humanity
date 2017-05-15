@@ -1,7 +1,7 @@
 const io = require('socket.io-client');
 require('should');
 
-const socketURL = 'http://localhost:3000';
+const socketURL = 'http://localhost:3001';
 
 const options = {
   transports: ['websocket'],
