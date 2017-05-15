@@ -1,5 +1,6 @@
 // Instance the tour
 const museTour = new Tour({
+  storage: window.localStorage,
   steps: [
     {
       element: '#homer',
@@ -25,17 +26,17 @@ const museTour = new Tour({
     {
       element: '#sign-up',
       title: 'Sign up here!',
-      content: 'Enter your credentials to be signed up.'
+      content: 'Enter your credentials to be signed up or play as guest.'
     }
   ]
 });
 
 // Initialize the tour
 museTour.init();
-museTour.start().goTo(1);
+museTour.start().goTo(0);
 
-const welcome = {
+welcome = {
   start() {
-    museTour.restart();
+    tour.restart();
   }
 };
