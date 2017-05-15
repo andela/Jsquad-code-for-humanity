@@ -4,8 +4,8 @@
         "name": "Cards for Humanity - Test on travis"
     },
     "facebook": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
+        "clientID": "214023272446068",
+        "clientSecret": "21ffb019b80472307ff74982671883a0",
         "callbackURL": "http://localhost:3000/auth/facebook/callback"
     },
     "twitter": {
