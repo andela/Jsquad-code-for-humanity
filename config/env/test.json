@@ -9,18 +9,18 @@
         "callbackURL": "http://localhost:3000/auth/facebook/callback"
     },
     "twitter": {
-        "clientID": "CONSUMER_KEY",
-        "clientSecret": "CONSUMER_SECRET",
+        "clientID": "nHVH04Z3xH5rseXF3I8kwOI7x",
+        "clientSecret": "1fwXMoRHIXMMgMilFOCheFFeIHsuuuR4FnqHJdAtHvpKLzMSz4",
         "callbackURL": "http://localhost:3000/auth/twitter/callback"
     },
     "github": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
+        "clientID": "98ab7f125474158b17f4",
+        "clientSecret": "d8ea2f1d1f578b5452b25b16969b8e115eda6c3d",
         "callbackURL": "http://localhost:3000/auth/github/callback"
     },
     "google": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
+        "clientID": "672569567273-22s48pjcj5docpg71kvjqgjfo7joevdj.apps.googleusercontent.com",
+        "clientSecret": "NyfLb9Db8cRL757ucdNzyquF",
         "callbackURL": "http://localhost:3000/auth/google/callback"
     }
 }
