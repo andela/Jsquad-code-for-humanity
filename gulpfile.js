@@ -11,6 +11,7 @@ const mocha = require('gulp-mocha');
 const istanbul = require('gulp-istanbul');
 const browserSync = require('browser-sync');
 const dotenv = require('dotenv');
+const html2pug = require('gulp-html2pug');
 
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -28,6 +29,13 @@ gulp.task('sass', () => gulp.src('public/css/*.scss')
   .pipe(gulp.dest('public/css')));
 gulp.task('sass:watch', () => {
   gulp.watch('public/css/*.scss', ['sass']);
+});
+
+// Html2pug task
+gulp.task('pug', function () {
+  return gulp.src('app.html')
+  .pipe(html2pug())
+  .pipe(gulp.dest('pug'));
 });
 
 // Nodemon task
