@@ -414,10 +414,12 @@ Game.prototype.killGame = function () {
 // to start the next round czar should pick the black card
 Game.prototype.startNextRound = (self) => {
   if (self.state === 'pick black card') {
-    self.stateChoosing(self);
+    self.sendUpdate(self);
   }
 };
-// to change the czar
+
+    // to change the czar
+
 Game.prototype.changeCzar = (self) => {
   self.state = 'pick black card';
   self.table = [];
