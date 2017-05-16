@@ -1,4 +1,4 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
+angular.module('mean', ['bm.bsTour', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
   .config(['$routeProvider',
     function ($routeProvider) {
       $routeProvider
@@ -51,4 +51,4 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
 
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
-angular.module('myApp', ['bm.bsTour']);
+angular.module('myApp', ['bm.uiTour']);
