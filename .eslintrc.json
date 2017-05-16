@@ -38,12 +38,13 @@
       "error",
       "multi-line"
     ],
-    "import/no-unresolved": [
-      2,
-      {
-        "commonjs": true
-      }
-    ],
+    "import/no-unresolved": 0,
+    // [
+    //   2,
+    //   {
+    //     "commonjs": true
+    //   }
+    // ],
     "no-shadow": [
       "error",
       {
