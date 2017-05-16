@@ -1,11 +1,11 @@
-const Game = require(__dirname, './game');
-const Player = require(__dirname, './player');
-require(__dirname, 'console-stamp')(console, 'm/dd HH:MM:ss');
-const mongoose = require(__dirname, 'mongoose');
+const Game = require('./game');
+const Player = require('./player');
+require('console-stamp')(console, 'm/dd HH:MM:ss');
+const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
 
-const avatars = require(`${__dirname}/../../app/controllers/avatars.js`).all();
+const avatars = require('../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
 const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
@@ -21,16 +21,12 @@ module.exports = function (io) {
     socket.on('pickCards', function (data) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
-      } else {
-        // console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
       }
     });
 
     socket.on('pickWinning', function (data) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
-      } else {
-        // console.log('Received pickWinning from', socket.id, 'but game does not to exist!');
       }
     });
 
@@ -48,9 +44,7 @@ module.exports = function (io) {
     socket.on('startGame', function () {
       if (allGames[socket.gameID]) {
         const thisGame = allGames[socket.gameID];
-        // console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
-          // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function (game, index) {
             if (game.gameID === socket.gameID) {
               return gamesNeedingPlayers.splice(index, 1);
@@ -79,9 +73,7 @@ module.exports = function (io) {
   const getGame = function (player, socket, requestedGameId, createPrivate) {
     requestedGameId = requestedGameId || '';
     createPrivate = createPrivate || false;
-    // console.log(socket.id, 'is requesting room', requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
-      // console.log('Room', requestedGameId, 'is valid');
       const game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
@@ -103,8 +95,6 @@ module.exports = function (io) {
           gamesNeedingPlayers.shift();
           game.prepareGame();
         }
-      } else {
-        // TODO: Send an error message back to this user saying the game has already started
       }
     } else if (createPrivate) {
       createGameWithFriends(player, socket);
@@ -122,7 +112,6 @@ module.exports = function (io) {
         _id: data.userID
       }).exec(function (err, user) {
         if (err) {
-          // console.log('err', err);
           return err; // Hopefully this never happens.
         }
         if (!user) {
@@ -157,7 +146,6 @@ module.exports = function (io) {
       gamesNeedingPlayers.push(game);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
-      // console.log(socket.id, 'has joined newly created game', game.gameID);
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
@@ -165,7 +153,6 @@ module.exports = function (io) {
       game = gamesNeedingPlayers[0];
       allPlayers[socket.id] = true;
       game.players.push(player);
-      // console.log(socket.id, 'has joined game', game.gameID);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       game.assignPlayerColors();
@@ -192,7 +179,6 @@ module.exports = function (io) {
         isUniqueRoom = true;
       }
     }
-    // console.log(socket.id, 'has created unique game', uniqueRoom);
     const game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
@@ -205,10 +191,8 @@ module.exports = function (io) {
   };
 
   const exitGame = function (socket) {
-    // console.log(socket.id, 'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
       const game = allGames[socket.gameID];
-      // console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
         game.players.length - 1 >= game.playerMinLimit) {

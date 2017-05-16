@@ -1,8 +1,9 @@
-const async = require(__dirname, 'async');
-const _ = require(__dirname, 'underscore');
+const async = require('async');
+const _ = require('underscore');
 
-const questions = require(`${__dirname}/../../app/controllers/questions.js`);
-const answers = require(`${__dirname}/../../app/controllers/answers.js`);
+const questions = require('../../app/controllers/questions.js');
+const answers = require('../../app/controllers/answers.js');
+
 const guestNames = [
   'Disco Potato',
   'Silver Blister',
@@ -148,7 +149,6 @@ Game.prototype.sendUpdate = function () {
 
 Game.prototype.stateChoosing = function (self) {
   self.state = 'waiting for players to pick';
-  // console.log(self.gameID,self.state);
   self.table = [];
   self.winningCard = -1;
   self.winningCardPlayer = -1;
@@ -161,7 +161,6 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.round++;
   self.dealAnswers();
-  // no need to rotate czar cos of changeCzar
   self.sendUpdate();
 };
 
@@ -173,15 +172,11 @@ Game.prototype.selectFirst = function () {
     this.players[winnerIndex].points++;
     this.winnerAutopicked = true;
     this.stateResults(this);
-  } else {
-    // console.log(this.gameID,'no cards were picked!');
-    // this.stateChoosing(this);
   }
 };
 
 Game.prototype.stateJudging = function (self) {
   self.state = 'waiting for czar to decide';
-  // console.log(self.gameID,self.state);
 
   if (self.table.length <= 1) {
     // Automatically select a card if only one card was submitted
@@ -434,8 +429,7 @@ Game.prototype.changeCzar = (self) => {
   self.sendUpdate();
   self.changeCzarTimeout = setTimeout(() => {
     if (self.state !== 'waiting for players to pick') {
-      // self.startNextRound(self);
-      // self.stateChoosing(self);
+      self.startNextRound(self);
     }
   }, self.timeLimits.stateChangeCzar * 1000);
 };
