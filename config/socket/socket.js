@@ -208,7 +208,7 @@ module.exports = function (io) {
         isUniqueRoom = true;
       }
     }
-    const game = new Game(uniqueRoom, io);
+    game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -221,7 +221,7 @@ module.exports = function (io) {
 
   const exitGame = function (socket) {
     if (allGames[socket.gameID]) { // Make sure game exists
-      const game = allGames[socket.gameID];
+      game = allGames[socket.gameID];
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
         game.players.length - 1 >= game.playerMinLimit) {
