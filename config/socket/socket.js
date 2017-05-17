@@ -57,8 +57,6 @@ module.exports = function (io) {
     socket.on('pickWinning', function (data) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
-      } else {
-        console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -76,9 +74,7 @@ module.exports = function (io) {
     socket.on('startGame', function () {
       if (allGames[socket.gameID]) {
         const thisGame = allGames[socket.gameID];
-        console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
-          // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function (game, index) {
             if (game.gameID === socket.gameID) {
               return gamesNeedingPlayers.splice(index, 1);
@@ -98,9 +94,46 @@ module.exports = function (io) {
       console.log('Rooms on Disconnect ', io.sockets.adapter.rooms);
       exitGame(socket);
     });
-  });
 
-  var joinGame = function (socket, data) {
+    // socket event listener for when Czar clicks card
+    socket.on('pickBlackCard', () => {
+      allGames[socket.gameID].startNextRound(allGames[socket.gameID]);
+    });
+  });
+  const getGame = function (player, socket, requestedGameId, createPrivate) {
+    requestedGameId = requestedGameId || '';
+    createPrivate = createPrivate || false;
+    if (requestedGameId.length && allGames[requestedGameId]) {
+      const game = allGames[requestedGameId];
+      // Ensure that the same socket doesn't try to join the same game
+      // This can happen because we rewrite the browser's URL to reflect
+      // the new game ID, causing the view to reload.
+      // Also checking the number of players, so node doesn't crash when
+      // no one is in this custom room.
+      if (game.state === 'awaiting players' && (!game.players.length ||
+        game.players[0].socket.id !== socket.id)) {
+        // Put player into the requested game
+        allPlayers[socket.id] = true;
+        game.players.push(player);
+        socket.join(game.gameID);
+        socket.gameID = game.gameID;
+        game.assignPlayerColors();
+        game.assignGuestNames();
+        game.sendUpdate();
+        game.sendNotification(`${player.username} has joined the game!`);
+        if (game.players.length >= game.playerMaxLimit) {
+          gamesNeedingPlayers.shift();
+          game.prepareGame();
+        }
+      }
+    } else if (createPrivate) {
+      createGameWithFriends(player, socket);
+    } else {
+      fireGame(player, socket);
+    }
+  };
+
+  const joinGame = function (socket, data) {
     const player = new Player(socket);
     data = data || {};
     player.userID = data.userID || 'unauthenticated';
@@ -109,7 +142,6 @@ module.exports = function (io) {
         _id: data.userID
       }).exec(function (err, user) {
         if (err) {
-          console.log('err', err);
           return err; // Hopefully this never happens.
         }
         if (!user) {
@@ -131,50 +163,8 @@ module.exports = function (io) {
     }
   };
 
-  var getGame = function (player, socket, requestedGameId, createPrivate) {
-    requestedGameId = requestedGameId || '';
-    createPrivate = createPrivate || false;
-    console.log(socket.id, 'is requesting room', requestedGameId);
-    if (requestedGameId.length && allGames[requestedGameId]) {
-      console.log('Room', requestedGameId, 'is valid');
-      const game = allGames[requestedGameId];
-      // Ensure that the same socket doesn't try to join the same game
-      // This can happen because we rewrite the browser's URL to reflect
-      // the new game ID, causing the view to reload.
-      // Also checking the number of players, so node doesn't crash when
-      // no one is in this custom room.
-      if (game.state === 'awaiting players' && (!game.players.length ||
-        game.players[0].socket.id !== socket.id)) {
-        // Put player into the requested game
-        console.log('Allowing player to join', requestedGameId);
-        allPlayers[socket.id] = true;
-        game.players.push(player);
-        socket.join(game.gameID);
-        socket.gameID = game.gameID;
-        game.assignPlayerColors();
-        game.assignGuestNames();
-        game.sendUpdate();
-        game.sendNotification(`${player.username} has joined the game!`);
-        if (game.players.length >= game.playerMaxLimit) {
-          gamesNeedingPlayers.shift();
-          game.prepareGame();
-        }
-      } else {
-        // TODO: Send an error message back to this user saying the game has already started
-      }
-    } else {
-      // Put players into the general queue
-      console.log('Redirecting player', socket.id, 'to general queue');
-      if (createPrivate) {
-        createGameWithFriends(player, socket);
-      } else {
-        fireGame(player, socket);
-      }
-    }
-  };
 
-  var fireGame = function (player, socket) {
-    let game;
+  const fireGame = function (player, socket) {
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
       const gameIDStr = gameID.toString();
@@ -185,7 +175,6 @@ module.exports = function (io) {
       gamesNeedingPlayers.push(game);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
-      console.log(socket.id, 'has joined newly created game', game.gameID);
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
@@ -193,7 +182,6 @@ module.exports = function (io) {
       game = gamesNeedingPlayers[0];
       allPlayers[socket.id] = true;
       game.players.push(player);
-      console.log(socket.id, 'has joined game', game.gameID);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       game.assignPlayerColors();
@@ -207,7 +195,7 @@ module.exports = function (io) {
     }
   };
 
-  var createGameWithFriends = function (player, socket) {
+  const createGameWithFriends = function (player, socket) {
     let isUniqueRoom = false;
     let uniqueRoom = '';
     // Generate a random 6-character game ID
@@ -220,7 +208,6 @@ module.exports = function (io) {
         isUniqueRoom = true;
       }
     }
-    console.log(socket.id, 'has created unique game', uniqueRoom);
     const game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
@@ -232,11 +219,9 @@ module.exports = function (io) {
     game.sendUpdate();
   };
 
-  var exitGame = function (socket) {
-    console.log(socket.id, 'has disconnected');
+  const exitGame = function (socket) {
     if (allGames[socket.gameID]) { // Make sure game exists
       const game = allGames[socket.gameID];
-      console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
         game.players.length - 1 >= game.playerMinLimit) {
