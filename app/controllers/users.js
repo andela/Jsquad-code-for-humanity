@@ -21,6 +21,10 @@ exports.signin = function (req, res) {
   }
 };
 
+// exports.loginWithFacebook = function (req, res, socialProvider) {
+//   socialProvider.setFbKey({ appId: 'YOUR FACEBOOK APP ID', apiVersion: 'API VERSION" });
+// };
+
 // Show sign up form
 
 exports.signup = function (req, res) {
