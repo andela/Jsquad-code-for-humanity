@@ -19,6 +19,7 @@
     "postinstall": "gulp bower"
   },
   "dependencies": {
+    "angular-h-sweetalert": "^2.0.1",
     "async": "~2.3.0",
     "bcryptjs": "~2.4.3",
     "body-parser": "^1.17.1",
@@ -51,6 +52,7 @@
     "mocha": "^3.2.0",
     "mongoose": "~4.9.4",
     "morgan": "^1.8.1",
+    "nodemailer": "^4.0.1",
     "passport": "~0.3.2",
     "passport-facebook": "~2.1.1",
     "passport-github": "~1.1.0",
@@ -62,6 +64,7 @@
     "sinon": "~2.1.0",
     "socket.io": "~1.7.3",
     "socket.io-client": "~1.7.3",
+    "sweetalert2": "^6.6.2",
     "underscore": "~1.8.3",
     "view-helpers": "~0.1.5"
   },

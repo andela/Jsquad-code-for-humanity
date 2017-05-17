@@ -56,7 +56,16 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link() { }
+      link(scope) {
+        scope.swalert = function () {
+          // game full popup function
+          swal('Game has maximum players!');
+        };
+        scope.swlert = function () {
+          // game full popup function
+          swal('Game is on, start a new game!');
+        };
+      }
     };
   })
   .directive('timer', function () {

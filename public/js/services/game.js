@@ -10,7 +10,7 @@ const GameController = function (socket, $timeout) {
     table: [],
     czar: null,
     playerMinLimit: 3,
-    playerMaxLimit: 6,
+    playerMaxLimit: 12,
     pointLimit: null,
     state: null,
     round: 0,
@@ -31,7 +31,11 @@ const GameController = function (socket, $timeout) {
       game.notification = '';
     } else {
       game.notification = notificationQueue.shift(); // Show a notification and check again in a bit
-      timeout = $timeout(setNotification, 1300);
+      if (game.notification === 'Game has maximum players') {
+        timeout = false;
+      } else {
+        timeout = $timeout(setNotification, 1300);
+      }
     }
   };
 

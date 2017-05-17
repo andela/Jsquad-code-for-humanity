@@ -22,6 +22,7 @@ module.exports = function (app, passport, auth) {
   //Setting up the users api
   app.post('/users', users.create);
   app.post('/users/avatars', users.avatars);
+  app.get('/api/search/users', users.all);
 
   // Donation Routes
   app.post('/donations', users.addDonation);
@@ -75,29 +76,23 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Finish with setting up the userId param
+  // Finish with setting up the userId param
   app.param('userId', users.user);
-
-
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
-
   app.get('/questions', questions.all);
   app.get('/questions/:questionId', questions.show);
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
-
   app.get('/avatars', avatars.allJSON);
 
   //Home route
-
   app.get('/play', index.play);
   app.get('/', index.render);
-
   app.post('/api/auth/login', users.loginWithEmail);
   app.post('/api/auth/signup', users.signupWithEmail);
 };

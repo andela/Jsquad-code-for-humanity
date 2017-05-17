@@ -28,7 +28,7 @@ function Game(gameID, io) {
   this.winnerAutopicked = false;
   this.czar = -1; // Index in this.players
   this.playerMinLimit = 3;
-  this.playerMaxLimit = 6;
+  this.playerMaxLimit = 12;
   this.pointLimit = 5;
   this.state = "awaiting players";
   this.round = 0;
@@ -84,6 +84,13 @@ Game.prototype.payload = function () {
 Game.prototype.sendNotification = function (msg) {
   this.io.sockets.in(this.gameID).emit('notification', { notification: msg });
 };
+
+Game.prototype.fullNotification = function (msg, playerId) {
+  if (this.io.sockets.connected[playerId]) {
+    this.io.sockets.connected[playerId].emit('notification', { notification: msg });
+  }
+};
+
 
 // Currently called on each joinGame event from socket.js
 // Also called on removePlayer IF game is in 'awaiting players' state
