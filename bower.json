@@ -7,8 +7,7 @@
     "angular-ui-utils": "0.0.4",
     "jquery": "~1.9.1",
     "underscore": "~1.5.2",
-    "angular-sanitize": "^1.6.4",
-    "angular-bootstrap-tour": "^0.3.4"
+    "angular-intro.js": "^3.2.4"
   },
   "exportsOverride": {
     "bootstrap": {
