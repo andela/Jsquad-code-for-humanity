@@ -4,7 +4,6 @@ const avatars = require('./avatars').all();
 const jwt = require('jsonwebtoken');
 
 const User = mongoose.model('User');
-
 const secretKey = process.env.SECRET_TOKEN_KEY;
 
 // Auth callback
@@ -65,24 +64,24 @@ exports.checkAvatar = function (req, res) {
 
 // Create user
 
-exports.create = function (req, res, next) {
+exports.create = (req, res) => {
   if (req.body.name && req.body.password && req.body.email) {
     User.findOne({
       email: req.body.email
-    }).exec(function (err, existingUser) {
+    }).exec((err, existingUser) => {
       if (!existingUser) {
         const user = new User(req.body);
         // Switch the user's avatar index to an actual avatar url
         user.avatar = avatars[user.avatar];
         user.provider = 'local';
-        user.save(function (err) {
+        user.save((err) => {
           if (err) {
             return res.render('/#!/signup?error=unknown', {
               errors: err.errors,
               user
             });
           }
-          req.logIn(user, function (err) {
+          req.logIn(user, (err) => {
             if (err) return next(err);
             return res.redirect('/#!/');
           });
@@ -168,26 +167,24 @@ exports.user = function (req, res, next, id) {
     });
 };
 
-exports.signupWithEmail = function (req, res) {
-  // get the user credentials from form  req.body.password
-  // req.body.email
-  User
-    .findOne({ email: req.body.email })
-    .then((existingUser, err) => {
-      if (err) throw err;
-      if (existingUser) {
-        return res.json({ message: 'A user with this email address already exists' });
-      }
-
-      const token = jwt.sign(existingUser._id, secretKey, {
-        expiresIn: '24h'
-      });
-
-      existingUser.password = null;
-      res.status(200).json(Object.assign({}, existingUser._doc, { token }));
+exports.signUp = (req, res) => {
+  if (!(req.body.name && req.body.password && req.body.email)) {
+    return res.status(500).json({ message: 'User credentials required' });
+  }
+  const user = new User(req.body);
+  // Switch the user's avatar index to an actual avatar url
+  user.avatar = avatars[user.avatar];
+  user.provider = 'jwt';
+  user.save((err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Could not create user' });
+    }
+    const token = jwt.sign({ data: user._id }, secretKey, {
+      expiresIn: '24h'
     });
+    res.status(200).json(Object.assign({}, user._doc, { token }));
+  });
 };
-
 
 exports.loginWithEmail = function (req, res) {
   // get the user credentials from form  req.body.password
