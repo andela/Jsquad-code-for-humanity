@@ -132,20 +132,12 @@ const GameController = function (socket, $timeout) {
     if (game.state !== 'waiting for players to pick' || game.players.length !== data.players.length) {
       game.players = data.players;
     }
-    // new game state
+
     if (newState || game.curQuestion !== data.curQuestion) {
       game.state = data.state;
     }
-    // service to listen to the czar draw card state
-    if (data.state === 'pick black card') {
-      game.czar = data.czar;
-      if (game.czar === game.playerIndex) {
-        addToNotificationQueue(`You are now a Czar, 
-        click black card to pop a new question`);
-      } else {
-        addToNotificationQueue('Waiting for Czar to pick card');
-      }
-    } else if (data.state === 'waiting for players to pick') {
+
+    if (data.state === 'waiting for players to pick') {
       game.czar = data.czar;
       game.curQuestion = data.curQuestion;
       // Extending the underscore within the question
@@ -154,7 +146,7 @@ const GameController = function (socket, $timeout) {
       // Set notifications only when entering state
       if (newState) {
         if (game.czar === game.playerIndex) {
-          addToNotificationQueue('You are the Card Czar! Please wait!');
+          addToNotificationQueue('You\'re the Card Czar! Please wait!');
         } else if (game.curQuestion.numAnswers === 1) {
           addToNotificationQueue('Select an answer!');
         } else {
@@ -211,10 +203,6 @@ const GameController = function (socket, $timeout) {
   };
 
   decrementTime();
-  // Starts the next round after the Czar clicks
-  game.startNextRound = () => {
-    socket.emit('pickBlackCard');
-  };
 
   return game;
 };
