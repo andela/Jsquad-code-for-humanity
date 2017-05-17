@@ -114,7 +114,7 @@ module.exports = function (passport) {
           });
         } else {
           user.facebook = null;
-          return done(err, user);
+          6   return done(err, user);
         }
       });
     }
