@@ -113,8 +113,11 @@ module.exports = function(io) {
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
       var game = allGames[requestedGameId];
-      if (game.state === 'waiting for players to pick') {
+      if (game.state === 'waiting for players to pick' ) {
         game.fullNotification('Game has maximum players', player.socket.id);
+      }
+      if (game.state === 'waiting for players to pick' && game.players.length < game.playerMaxLimit) {
+        game.fullNotification('Game has already started', player.socket.id);
       }
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect

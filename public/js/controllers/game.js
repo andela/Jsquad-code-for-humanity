@@ -120,7 +120,6 @@ angular.module('mean.system')
 
       $scope.startGame = function () {
         if (game.players.length < 3) {
-          let swal;
           swal('Game can not start with less than 3 players');
         } else {
           game.startGame();
@@ -165,6 +164,25 @@ angular.module('mean.system')
             if (!$scope.modalShown) {
               setTimeout(function () {
                 const link = document.URL;
+                // var newOptions = {
+                //   'red' : 'Red',
+                //   'blue' : 'Blue',
+                //   'green' : 'Green',
+                //   'yellow' : 'Yellow'
+                // };
+                // var select = $('#oh-el');
+                // if(select.prop) {
+                //   var options = select.prop('options');
+                // }
+                // else {
+                //   var options = select.attr('options');
+                // }
+                // $('option', select).remove();
+
+                // $.each(newOptions, function(val, text) {
+                //     options[options.length] = new Option(text, val);
+                // });
+                // select.val(selectedOption);
                 const txt = 'Give the following link to your friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
                 $('#oh-el').css({ 'text-align': 'center', 'font-size': '22px', background: 'white', color: 'black' }).text(link);

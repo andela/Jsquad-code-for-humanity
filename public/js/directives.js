@@ -58,9 +58,12 @@ angular.module('mean.directives', [])
       templateUrl: '/views/question.html',
       link(scope) {
         scope.swalert = function () {
-          let swal;
           // game full popup function
           swal('Game has maximum players!');
+        };
+        scope.swlert = function () {
+          // game full popup function
+          swal('Game is on, start a new game!');
         };
       }
     };
