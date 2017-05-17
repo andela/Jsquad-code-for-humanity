@@ -39,12 +39,6 @@
       "multi-line"
     ],
     "import/no-unresolved": 0,
-    // [
-    //   2,
-    //   {
-    //     "commonjs": true
-    //   }
-    // ],
     "no-shadow": [
       "error",
       {

@@ -99,6 +99,7 @@ module.exports = function (passport) {
           return done(err);
         }
         if (!user) {
+          console.log(profile);
           user = new User({
             name: profile.displayName,
             email: (profile.emails && profile.emails[0].value) || '',
@@ -123,11 +124,9 @@ module.exports = function (passport) {
   passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID || config.github.clientID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET || config.github.clientSecret,
-    callbackURL: config.github.callbackURL,
-    scope: 'user:email'
+    callbackURL: config.github.callbackURL
   },
     function (accessToken, refreshToken, profile, done) {
-      console.log('Emails: ', profile);
       User.findOne({
         'github.id': profile.id
       }, function (err, user) {
@@ -143,7 +142,7 @@ module.exports = function (passport) {
             github: profile._json
           });
           user.save(function (err) {
-            if (err);
+            if (err) console.log(err);
             return done(err, user);
           });
         } else {
