@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 
 
 module.exports = function (passport) {
-  //Serialize sessions
+  // Serialize sessions
   passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
@@ -25,7 +25,7 @@ module.exports = function (passport) {
     });
   });
 
-  //Use local strategy
+  // Use local strategy
   passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
@@ -54,7 +54,7 @@ module.exports = function (passport) {
     }
   ));
 
-  //Use twitter strategy
+  // Use twitter strategy
   passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY || config.twitter.clientID,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET || config.twitter.clientSecret,
@@ -153,7 +153,7 @@ module.exports = function (passport) {
     }
   ));
 
-  //Use google strategy
+  // Use google strategy
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID || config.google.clientID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || config.google.clientSecret,
