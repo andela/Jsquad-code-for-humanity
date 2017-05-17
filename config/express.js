@@ -69,13 +69,11 @@ module.exports = function (app, passport, mongoose) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  // Assume "not found" in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
+  // Assume "not found" in the error msgs is a 404. this is somewhat silly,
+  // but valid, you can do whatever you like, set properties, use instanceof etc.
   app.use(function (err, req, res, next) {
     // Treat as 404
-    if (~err.message.indexOf('not found')) return next();
-
-    // Log it
-    console.error(err.stack);
+    if (err.message.indexOf('not found')) return next();
 
     // Error page
     res.status(500).render('500', {
