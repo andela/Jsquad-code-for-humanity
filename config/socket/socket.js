@@ -113,7 +113,7 @@ module.exports = function(io) {
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room',requestedGameId,'is valid');
       var game = allGames[requestedGameId];
-      if (game.state === 'waiting for players to pick' ) {
+      if (game.state === 'waiting for players to pick') {
         game.fullNotification('Game has maximum players', player.socket.id);
       }
       if (game.state === 'waiting for players to pick' && game.players.length < game.playerMaxLimit) {
