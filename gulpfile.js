@@ -12,6 +12,7 @@ const istanbul = require('gulp-istanbul');
 const browserSync = require('browser-sync');
 const dotenv = require('dotenv');
 const html2pug = require('gulp-html2pug');
+const pug = require('gulp-pug');
 
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
@@ -32,10 +33,16 @@ gulp.task('sass:watch', () => {
 });
 
 // Html2pug task
-gulp.task('pug', function () {
-  return gulp.src('app.html')
+gulp.task('html-pug', function () {
+  return gulp.src('public/views/app.html')
   .pipe(html2pug())
-  .pipe(gulp.dest('pug'));
+  .pipe(gulp.dest('app/views'));
+});
+
+gulp.task('pug-html', function () {
+  return gulp.src(['app/views/**/*.pug', '!app/views/users/**.pug'])
+  .pipe(pug())
+  .pipe(gulp.dest('public/views'));
 });
 
 // Nodemon task
