@@ -143,7 +143,7 @@ module.exports = function (passport) {
             github: profile._json
           });
           user.save(function (err) {
-            if (err) console.log(err);
+            if (err);
             return done(err, user);
           });
         } else {
