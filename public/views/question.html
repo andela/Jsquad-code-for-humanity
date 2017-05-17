@@ -1,9 +1,34 @@
+<div id="card-modal" class="modal fade" role="dialog" data-controls-modal="card-modal" data-backdrop="static">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="color: #800000">You are Czar!Click card to pick the next question</h4>
+      </div>
+      <div class="modal-body" align="center">
+        <!-- calls shuffleCards method-->
+        <div ng-click="shuffleCards()" ng-style="{'cursor':'pointer'}" style='margin:auto;' class='animated flipInX' id='new-game-card'>
+          <div><img src='../img/blackcard.jpg'></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <!-- close the modal-->
+        <button type="button" class="btn btn-primary" id="closeModal" data-dismiss="modal" style="display:none; ">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="question-container-inner">
   <div class="card longBlack">
     <span ng-bind-html-unsafe="game.curQuestion.text" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'"></span>
 
     <div id="notifications" ng-if="game.notification" ng-animate="{enter:'animated fadeInLeft', leave:'animated fadeOut'}">{{game.notification}}</div>
-
+    <!-- called when czar draws card-->
+    <br>
+    <p ng-show="!isCzar() && game.state !== 'awaiting players'">
+      <center> {{ czarHasDrawn }} </center>
+    </p>
     <div id="startGame" ng-show="game.state === 'awaiting players'">
       <div id="finding-players">Finding Friends</div>
       <div id="player-count-container">

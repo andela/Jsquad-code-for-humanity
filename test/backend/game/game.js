@@ -72,13 +72,13 @@ describe('Game Server', function () {
     const expectStartGame = function () {
       client1.emit('startGame');
       client1.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client2.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client3.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       setTimeout(disconnect, 200);
     };
@@ -111,22 +111,22 @@ describe('Game Server', function () {
     const expectStartGame = function () {
       client1.emit('startGame');
       client1.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client2.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client3.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client4.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client5.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       client6.on('gameUpdate', function (data) {
-        data.state.should.equal('waiting for players to pick');
+        data.state.should.equal('pick black card');
       });
       setTimeout(disconnect, 200);
     };
