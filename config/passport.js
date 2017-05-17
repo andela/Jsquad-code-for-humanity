@@ -1,4 +1,4 @@
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
   LocalStrategy = require('passport-local').Strategy,
   TwitterStrategy = require('passport-twitter').Strategy,
   FacebookStrategy = require('passport-facebook').Strategy,
@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 
 
 module.exports = function (passport) {
-  //Serialize sessions
+  // Serialize sessions
   passport.serializeUser(function (user, done) {
     done(null, user.id);
   });
@@ -25,14 +25,14 @@ module.exports = function (passport) {
     });
   });
 
-  //Use local strategy
+  // Use local strategy
   passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
   },
     function (email, password, done) {
       User.findOne({
-        email: email
+        email
       }, function (err, user) {
         if (err) {
           return done(err);
@@ -54,7 +54,7 @@ module.exports = function (passport) {
     }
   ));
 
-  //Use twitter strategy
+  // Use twitter strategy
   passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY || config.twitter.clientID,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET || config.twitter.clientSecret,
@@ -75,7 +75,7 @@ module.exports = function (passport) {
             twitter: profile._json
           });
           user.save(function (err) {
-            if (err) console.log(err);
+            if (err);
             return done(err, user);
           });
         } else {
@@ -99,7 +99,6 @@ module.exports = function (passport) {
           return done(err);
         }
         if (!user) {
-          console.log(profile);
           user = new User({
             name: profile.displayName,
             email: (profile.emails && profile.emails[0].value) || '',
@@ -108,7 +107,7 @@ module.exports = function (passport) {
             facebook: profile._json
           });
           user.save(function (err) {
-            if (err) console.log(err);
+            if (err);
             user.facebook = null;
             return done(err, user);
           });
@@ -120,7 +119,7 @@ module.exports = function (passport) {
     }
   ));
 
-  //Use github strategy
+  // Use github strategy
   passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID || config.github.clientID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET || config.github.clientSecret,
@@ -142,7 +141,7 @@ module.exports = function (passport) {
             github: profile._json
           });
           user.save(function (err) {
-            if (err) console.log(err);
+            if (err);
             return done(err, user);
           });
         } else {
@@ -152,7 +151,7 @@ module.exports = function (passport) {
     }
   ));
 
-  //Use google strategy
+  // Use google strategy
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID || config.google.clientID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET || config.google.clientSecret,
@@ -174,7 +173,7 @@ module.exports = function (passport) {
             google: profile._json
           });
           user.save(function (err) {
-            if (err) console.log(err);
+            if (err);
             return done(err, user);
           });
         } else {
