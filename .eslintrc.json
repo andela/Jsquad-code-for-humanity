@@ -16,7 +16,8 @@
     "JQuery": true,
     "$": true,
     "expect": true,
-    "should": true
+    "should": true,
+    "swal": true
   },
   "rules": {
     "one-var": 0,
