@@ -13,13 +13,13 @@ const mongoose = require('mongoose'),
 const port = process.env.PORT || 3000;
 
 module.exports = function (app, passport, auth) {
-  //User Routes
+  // User Routes
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
   app.get('/signout', users.signout);
 
-  //Setting up the users api
+  // Setting up the users api
   app.post('/users', users.create);
   app.post('/users/avatars', users.avatars);
 
@@ -66,7 +66,6 @@ module.exports = function (app, passport, auth) {
   app.get('/auth/google', passport.authenticate('google', {
     failureRedirect: '/signin',
     scope: [
-      'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email'
     ]
   }), users.signin);
