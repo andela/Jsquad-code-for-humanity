@@ -18,5 +18,8 @@
     "angular-ui-utils": {
       "modules": "modules/route/route.js"
     }
+  },
+  "devDependencies": {
+    "angular-intro.js": "3.2.4"
   }
 }

@@ -86,13 +86,13 @@ angular.module('mean.directives', [])
       link: function (scope, element, attr) {
         var clickAction = attr.ngClick; // get the current ngclick value
         var d = element.bind('click', function () {
-          if (attr.disabled == undefined) {//check if the tag is available to be clicked
-            scope.$eval(clickAction) // call the event
+          if (attr.disabled == undefined) {// check if the tag is available to be clicked
+            scope.$eval(clickAction); // call the event
           }
         });
         scope.$on('$destroy', function () {
           d(); // destroy the bind we created, so it a memory leak is prevented.
-        })
+        });
       }
     };
   });
