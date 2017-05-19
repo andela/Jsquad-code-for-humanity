@@ -24,24 +24,24 @@ angular.module('mean.system')
     $scope.IntroOptions = {
       steps: [
         {
-          element: '#menuItems',
-          intro: 'All the menu items are defined here.',
-          position: 'top'
-        },
-        {
           element: '#homer',
           intro: 'WELCOME TO CFH.',
+          position: 'bottom'
+        },
+        {
+          element: '#menuItems',
+          intro: 'All the menu items are defined here.',
+          position: 'left'
+        },
+        {
+          element: '#content',
+          intro: 'How to play the game',
           position: 'top'
         },
         {
-          element: '#Avators',
-          intro: 'Select an avator of your choice',
-          position: 'top'
-        },
-        {
-          element: '#sign-in',
-          intro: 'click here to sign in.',
-          position: 'top'
+          element: '#contain-avatars',
+          intro: 'select avator.',
+          position: 'bottom'
         },
         {
           element: '#sign-up',

@@ -21,7 +21,7 @@
 
 <div ng-controller="IndexController">
   <div style="margin: 50px">
-    <button type="button" class="btn btn-primary" ng-click="startTour()"> Take tour</button>
+    <button type="button" align="right" class="btn btn-primary" ng-click="startTour()"> Tour</button>
   </div>
   <div ng-intro-options="IntroOptions" ng-intro-method="CallMe" ng-intro-oncomplete="CompletedEvent" ng-intro-onexit="ExitEvent"
     ng-intro-onchange="ChangeEvent" ng-intro-onbeforechange="BeforeChangeEvent" ng-intro-onafterchange="AfterChangeEvent" ng-intro-autostart="ShouldAutoStart"
@@ -49,7 +49,6 @@
                     <li style="list-style: none"><span><!--<li><a href="#!/signup">Sign Up</a></li>--></span></li>
                     <li><span><a href="#!/signin">Sign In</a></span></li>
                     <li>
-                      <button type="button" class="btn btn-primary" ng-click="startTour()"> Take tour</button>
                     </li>
                     <li style="list-style: none"><span></span></li>
                     <li><span><a href="/signout">Sign Out</a></span></li>
