@@ -60,19 +60,19 @@ angular.module('mean.system')
     };
 
     $scope.CompletedEvent = function () {
-      console.log('[directive] completed Event');
+
     };
     $scope.ExitEvent = function () {
-      console.log('[directive] exit Event');
+
     };
     $scope.ChangeEvent = function () {
-      console.log('[directive] change Event');
+
     };
     $scope.BeforeChangeEvent = function () {
-      console.log('[directive] beforeChange Event');
+
     };
     $scope.AfterChangeEvent = function () {
-      console.log('[directive] after change Event');
+
     };
     $scope.clearAndStartNewIntro = function () {
       $scope.IntroOptions = {
@@ -117,23 +117,23 @@ angular.module('mean.system')
       ngIntroService.setOptions($scope.IntroOptions);
 
       ngIntroService.onComplete(function () {
-        console.log('update some cookie or localstorage.');
+
       });
 
       ngIntroService.onExit(function () {
-        console.log('[service] exit');
+
       });
 
       ngIntroService.onBeforeChange(function () {
-        console.log('[service] before change');
+
       });
 
       ngIntroService.onChange(() => {
-        console.log('[service] on change');
+
       });
 
       ngIntroService.onAfterChange(() => {
-        console.log('[service] after Change');
+
       });
 
       ngIntroService.start();
