@@ -83,10 +83,10 @@ angular.module('mean.directives', [])
       restrict: 'A',
       priority: 1,
       terminal: true,
-      link: function (scope, element, attr) {
-        var clickAction = attr.ngClick; // get the current ngclick value
-        var d = element.bind('click', function () {
-          if (attr.disabled == undefined) {// check if the tag is available to be clicked
+      link(scope, element, attr) {
+        const clickAction = attr.ngClick; // get the current ngclick value
+        const d = element.bind('click', function () {
+          if (attr.disabled === undefined) { // check if the tag is available to be clicked
             scope.$eval(clickAction); // call the event
           }
         });
