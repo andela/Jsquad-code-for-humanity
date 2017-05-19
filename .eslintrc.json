@@ -37,6 +37,7 @@
       "error",
       "multi-line"
     ],
+    "no-console": 0,
     "import/no-unresolved": [
       2,
       {
